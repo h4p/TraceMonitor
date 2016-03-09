@@ -1,0 +1,20 @@
+% http://www.unix-ag.uni-kl.de/~fischer/blog/20070411_Tabellen_in_LaTeX/
+\usepackage{multirow}
+\usepackage{booktabs}
+\begin{tabular}{lll}
+	\toprule
+	Author & Title & Year \\
+	\midrule
+	\multirow{3}{*}{Philip K. Dick} & Minority Report & 1956 \\
+	\cmidrule{2-3}
+	 & Do Androids Dream of Electric Sheep? & 1968 \\
+	\cmidrule{2-3}
+	 & A Scanner Darkly & 1977 \\
+	\midrule
+	\multirow{3}{*}{Neal Stephenson} & Snow Crash & 1992 \\
+	\cmidrule{2-3}
+	 & The Diamond Age & 1995 \\
+	\cmidrule{2-3}
+	 & Cryptonomicon & 1999 \\
+	\bottomrule
+\end{tabular}

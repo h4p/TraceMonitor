@@ -1,0 +1,1741 @@
+\documentclass{scrartcl}				% Artikel Klasse des KOMA-Scripts
+\usepackage[cp1252]{inputenc} 			% Eingabe Encodierung
+\usepackage[T1]{fontenc}				% Umlaute in PDF, Computer-Modern Schriftfamilie
+\usepackage[ngerman]{babel}				% Sprache für Autotext
+\usepackage{natbib}						% Literaturverzeichnis und Referenzen erzeugen
+	\bibliographystyle{alphadin}		% Havardmethode: Abkuerzung Autor + Jahr
+\usepackage{graphicx} 					% Graphiken einbinden
+\usepackage{fancyhdr}               	% Kopf und Fusszeilen
+\usepackage{tabularx}					% Tabellen mit variabler Spaltenbreite
+\usepackage{multirow}					% Tabellen mit vereinten Zeilen
+%\usepackage{marginnote}					% Auf Seitenrand schreiben mit \marginpar
+\usepackage{booktabs}					% Schönere Tabellen nit \toprule etc.
+\usepackage[compatibility=false]{caption}	% Unterschriften unter Bildern
+\usepackage[usenames,dvipsnames]{color} % Farben verwenden
+\usepackage{colortbl}					% Farben in Tabellen verwenden. \cellcolor{}
+\usepackage{paralist}					% Kompakte Auflistung mit \begin{compactitem}
+\usepackage{minted}						% Source mit SyntaxHighlighting using Pygments
+	\usemintedstyle{tango}					% pygmentize -L styles
+\usepackage{listings}					% Auflistungen verwenden
+\lstset{
+	language=Java,                          % Code langugage
+	basicstyle=\ttfamily,                   % Code font, Examples: \footnotesize, \ttfamily
+	keywordstyle=\color{netbeansBlue},      % Keywords font ('*' = uppercase)
+	commentstyle=\color{grau},              % Comments font
+	identifierstyle=\color{black},			% Identifiers are 'public, private,.., class'
+	numbers=left,                           % Line nums position
+	numberstyle=\tiny,                      % Line-numbers fonts
+	stepnumber=1,                           % Step between two line-numbers
+	numbersep=5pt,                          % How far are line-numbers from code
+	backgroundcolor=\color{lightlightgray}, % Choose background color
+	frame=none,                             % A frame around the code
+	tabsize=2,                              % Default tab size
+	captionpos=b,                           % Caption-position = bottom
+	breaklines=true,                        % Automatic line breaking?
+	breakatwhitespace=false,                % Automatic breaks only at whitespace?
+	showspaces=false,                       % Dont make spaces visible
+	showstringspaces=false,					% Dont show whitespace character
+	showtabs=false,                         % Dont make tabls visible
+	%columns=flexible,                      % Column format
+	morekeywords={__global__, __device__}
+	}
+\usepackage{float}						% Alignment links und rechts
+\usepackage{hyperref}					% PDF Erzeugung steuern
+\hypersetup
+{
+	pdftitle 		= {Entwicklung eines Trace-Monitors zum Debuggen der Elster NPP-Geräteserie über eine Netzwerkverbindung}, 
+	pdfsubject 		= {Ausarbeitung},
+	pdfauthor 		= {Tobias Wessels},
+	pdfkeywords 	= {Ausarbeitung, Trace-Monitor, Tracing},
+	pdffitwindow 	= {false},
+	pdfstartview 	= {FitH}, 
+	colorlinks 		= {false},
+	pdfborder		= {0 0 0},
+	bookmarksnumbered = {true},
+	bookmarksopen 	= {true},
+% pdfpagemode = {FullScreen}
+}
+
+% =============== Farben =============== #
+\definecolor{grau}{rgb}{0.5,0.5,0.5}
+\definecolor{hellgrau}{RGB}{237, 237, 237}
+\definecolor{orange}{rgb}{1.0,0.4,0}
+\definecolor{flickrPink}{RGB}{255,0,132}
+\definecolor{lastFmRed}{RGB}{208, 31, 60}
+\definecolor{diggBlue}{RGB}{53, 106, 160}
+\definecolor{dunkelblau}{rgb}{0.0,0.0,0.6}
+\definecolor{tuerkis}{rgb}{0.0,0.7,0.7}
+\definecolor{helltuerkis}{rgb}{0.3,0.7,0.7}
+\definecolor{dunkelgrau}{rgb}{0.2,0.2,0.2}
+\definecolor{Brown}{cmyk}{0,0.81,1,0.60}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.9}
+\definecolor{netbeansBlue}{RGB}{0,0,230}
+\definecolor{bgrau}{rgb}{0.95,0.95,0.95}
+\definecolor{architectBrown1}{RGB}{252,242,227}
+\definecolor{architectBrown2}{RGB}{229,219,205}
+
+% =============== Kopf- und Fusszeile =============== #
+\pagestyle{fancy}
+\fancyhf{} % alle Kopf und Fusszeilen löschen
+
+\fancyfoot[L]
+{\tiny \fontfamily{phv} \selectfont{
+  {Tobias Wessels
+}}}
+
+\fancyhead[L]
+{\tiny \fontfamily{phv} \selectfont{
+  {\textcolor{orange}{\bf Elster-Instromet GmbH}}\\
+  {\textcolor{orange}{\bf Dortmund}}
+}}
+
+\fancyhead[R]
+{\tiny \fontfamily{phv} \selectfont{
+ {\textcolor{dunkelgrau}{\bf FB Informatik}}\\
+}}
+
+\fancyfoot[R,OR]{\tiny \thepage}
+
+% =============== Macros =============== #
+\newcommand{\highl}[1] {{\textbf{#1}}} 	% Text hervorheben
+\newcommand{\eigen}[1] {\textsc{#1}}	% Produktnamen 
+\newcommand{\absatz}[1]{\parindent 0pt \textcolor{orange}{\textbf{#1}} \parskip
+12pt \\}
+\newcommand{\newparb}{\bigskip\par\noindent}	% neuer Absatz mit großem Abstand
+\newcommand{\newparm}{\medskip\par\noindent}	% neuer Absatz mit mittlerem Abstand
+\newcommand{\newpars}{\smallskip\par\noindent}	% neuer Absatz mit kleinem Abstand
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Code}[1]{\texttt{#1}}	% \colorbox{bgrau}
+\newcommand{\CodeZeilen}[1]{ \begin{lstlisting}[language=java] #1
+\end{lstlisting} }
+
+
+\def\TReg{\textsuperscript{\textregistered}}	% Registered Symbol hochgestellt
+\def\TCop{\textsuperscript{\textcopyright}}		% Copyright Symbol hochgestellt
+\def\TTra{\textsuperscript{\texttrademark}}		% Trademark Symbol hochgestellt
+% Monospaced 13
+
+% caption benötigt eine umgebung, hier ist eine für source code:
+% http://tex.stackexchange.com/questions/12428/code-spanning-over-two-pages-with-minted-inside-listing-with-caption
+\newenvironment{code}{\captionsetup{type=listing}}{}
+
+% Einstellungen für minted um verschiedene Programmiersprachen zu drucken
+\newminted{java}{linenos,numbersep=5pt,gobble=0,frame=lines}
+\newminted{sql}{linenos, numbersep=5pt,gobble=0,frame=lines}
+\newminted{xml}{linenos, numbersep=5pt,gobble=0,frame=lines}
+\newminted{python}{linenos, numbersep=5pt,gobble=0,frame=none, bgcolor=bgrau}
+\newminted{cpp}{linenos, numbersep=5pt,gobble=0,frame=none, bgcolor=bgrau}
+\newminted{c}{linenos, numbersep=5pt,gobble=0,frame=none, bgcolor=bgrau}
+
+\begin{document} 
+\selectlanguage{ngerman} 
+
+% Linksbündige Spalte mit einer festen Breite:
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+% Zentrierte Spalte fester Breite:
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+% Rechtsbündige Spalte fester Breite:
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+
+% =============== Titleseite =============== #
+\pagenumbering{roman}
+\begin{titlepage}
+\begin{center}
+\vspace*{\fill}
+
+% Upper part of the page
+%\includegraphics[width=0.5\textwidth]{pic/logo.jpg}\\[1cm]    
+\textsc{\Large Ausarbeitung}\\[0.5cm]
+
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Entwicklung eines Trace-Monitors zum Debuggen der Elster NPP-Geräteserie über eine Netzwerkverbindung}
+\HRule \\[1.5cm]
+
+% Author and supervisor
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:} \\
+Tobias \textsc{Wessels} 
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Professor:} \\
+Prof.Dr. \\ Erik \textsc{Kamsties}
+\end{flushright}
+\end{minipage}
+
+\vspace*{\fill}
+
+% Bottom of the page
+{\large \today}
+\end{center}
+\end{titlepage}
+
+% =============== Inhaltsverzeichnis =============== #
+\setcounter{page}{1}
+\tableofcontents
+\thispagestyle{plain} % kein header/footer für titelblatt und index
+\newpage
+
+% =============== Inhalt und Sektionen =============== #
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\section{Einleitung}
+\label{lbl:Einleitung}
+Die Firma \eigen{Elster-Instromet GmbH} entwickelt und vertreibt Geräte zur
+Messung, Regelung und Umwertung von Erdgas. Diese werden von Gas\-lieferanten in den
+Verteiler\-stellen eingesetzt um den Durchfluss zu regeln oder um fiskalische
+Abrechnungen durchzuführen. Typisch handelt es sich um
+eingebettete Systeme, mit kleinem Speicher und geringer Rechen\-leistung. Über
+viele Jahre hinweg arbeiten sie ohne Unterbrechung und verarbeiten
+Sensor\-daten.
+
+\label{lbl:Neue Produktplattform}
+Zurzeit arbeitet das Entwicklerteam an einer gemeinsamen Plattform für alle
+Geräte. Der Wunsch ist es, Anwendungen nur einmal für alle Geräte schreiben zu
+müssen. Dazu wird eine Funktionalität in einem eigenen Modul gekapselt, welche
+dann auf dem Basissystem ausgeführt wird. Module können einfach ausgetauscht und
+nachgeladen werden. Zum Beispiel könnte ein Mengenumwerter für Gas über ein
+Update dazu gebracht werden Flüssigkeiten zu messen.
+
+Bei dieser Systemarchitektur gibt es \highl{viele, parallel laufende
+Prozesse}. Diese Nebenläufigkeit begünstigt natürlich
+bekannte Probleme beim konkurrierenden Zugriff auf gemeinsame Daten. Dazu
+gehören Verklemmungen (oder Deadlocks), Starvation (Thread "`verhungert"', da ein
+anderer Thread eine Ressource nicht freigibt) oder Synchronisationsprobleme.
+Da der Compiler nur eine syntaktische- aber keine semantische Analyse des Codes
+vornimmt, machen sich diese Probleme erst zur Laufzeit bemerkbar und sind somit schwerer ausfindig zu machen.
+
+Fehler sind zudem stark abhängig von der verwendeten Konfiguration. In dem
+Mengenumwerter FC1 z.B. können bis zu sieben IO-Karten eingebaut werden. Je
+nach Parametrierung des Gerätes werden an den Eingängen verschiedene
+Messgrößen verarbeitet. Da Ein- und Ausgänge beliebig miteinander verschaltet
+werden können, entstehen so schnell Fehler.
+
+Tritt bei einem Kunden ein Problem auf, besteht zurzeit keine Möglichkeit eine
+schnelle Fehlersuche vorzunehmen. In der Regel fährt ein Außendienst-Mitarbeiter
+raus um Fehler über die serielle Schnittstelle auszulesen. Bei schweren Fehlern
+wird das komplette Gerät mitgenommen.
+ 
+Die Geräte dieser Plattform laufen auf einem ARM-basiertem 
+Mikrocontroller der Firma \eigen{Atmel}. Neben drei Ethernet-Ports, und
+USB-Anschluss gibt es einen SD-Karten Steckplatz. Dieser wird dazu genutzt
+das Betriebssystem von einer SD-Karte zu booten. Als Echtzeit-Betriebssystem
+kommt dabei \eigen{Integrity} von der Firma \eigen{Green Hills Software} zum
+Einsatz.
+
+
+
+\label{lbl:Überwachungs-Schnittstelle}
+Es wird eine \highl{Schnittstelle} benötigt, um das Gerät zur Laufzeit zu
+untersuchen. Sie soll nicht nur den Entwicklern bei ihrer täglichen Arbeit
+dienen, sondern auch den Außendienstmitarbeitern zur Fehlersuche. In den Geräten ist zwar ein
+kleines Display verbaut, jedoch eignet sich dieses aufgrund der Größe nicht fürs Debugging.
+Auch die vorhandene Terminalverbindung über serielle Schnittstelle eignet
+sich nicht, da nur reiner Text übertragen wird und sich keine Gruppierung oder
+Filterung vornehmen lässt.
+
+\section{Ziele}
+\label{lbl:Ziele}
+\highl{Tracing} soll zur Überwachung der NPP-Geräteserie eingesetzt werden. 
+Beim Tracing sendet das Gerät Nachrichten über eine Netzwerkverbindung zu einem
+Client. Diese Nachrichten, auch \emph{Traces} genannt, können dann zur
+Fehlersuche genutzt werden. Außerdem lassen sich mithilfe der Traces die vielen
+\highl{Programmabläufe besser nachvollziehen}. Zur Laufzeit wird sozusagen eine
+Historie über den Zustand des Geräts angelegt. Wie genau dieser äußere Zustand
+ist, hängt von der Anzahl und den Detailgrad der Traces ab.
+
+Stürtzt das Gerät ab oder berechnet es falsche Werte, so kann nachträglich eine
+Fehleranalyse vorgenommen werden. Da die Nachrichten ohnehin übers Netzwerk
+ausgegeben werden ist sogar ein \highl{Fernauslesen} denkbar. Das
+Tracing-Konzept soll dabei nicht an ein bestimmtes Netz gekoppelt sein, sondern
+kann über TCP/IP, als auch USB, Bluetooth oder Firewire erfolgen.
+Nachrichten sollen sich anhand ihrer Wichtigkeit unterscheiden lassen. Dies wird
+über \highl{Trace-Level} erreicht, welche zusammen mit dem Trace übertragen
+werden.
+
+\label{lbl:Trace-Tools}
+Das Tracing-Konzept ist wie ein Client-Server-Modell aufgebaut. Es werden also
+mindestens zwei Programme benötigt. Auf dem Gerät läuft ein kleiner Server,
+welcher auf Verbindungen der Clients wartet und ihnen die Trace-Nachrichten
+sendet. Dieses Programm wird \highl{Tracer} genannt. Auf dem
+Arbeitsplatz-Rechner läuft der Client namens \highl{Trace-Monitor}. Dieser
+verbindet sich zum Gerät und empfängt die Trace-Nachrichten. Auf
+die Anzeige der Traces kann Einfluss genommen werden, indem der
+\highl{Trace-Monitor} die Trace-Level auf dem Gerät neu setzt. Informationen
+werden so konzentriert oder reduziert.
+
+\label{lbl:Tracing-Konzept}
+In diesem Projekt soll ein \highl{Tracing-Konzept}, unter enger Zusammenarbeit
+mit den beteiligten Entwicklern, erstellt werden. Daraufhin wird als praktische
+Arbeit der \highl{Trace-Monitor} auf der PC-Seite entwickelt.
+
+\label{lbl:Integration in enSuite}
+Ein weiteres Ziel ist die Integration des Trace-Monitors in die
+Programmkollektion der NPP-Geräteserie namens \eigen{enSuite}. Über
+\eigen{enSuite} lassen sich Geräte der Firma Elster und andere Geräte, welche
+das MMS-Protokoll beherrschen, auslesen und konfigurieren. Statt eine Standalone-Anwendung zu entwickeln,
+soll der Monitor als weiteres Modul eingebunden werden. Somit lassen sich
+auch bestehende Funktionalitäten und Ressourcen nutzen. Durch den Zugriff auf
+das Geräteobjekt vereinfacht sich der Verbindungsaufbau, da IP-Adresse und
+Gerätetyp bereits bekannt sind. 
+
+Kunden und Außendienstmitarbeiter benötigen keine extra Software um Traces vom
+Gerät zu empfangen, da \eigen{enSuite} bereits vorinstalliert ist.  Durch die
+Aufnahme des Trace-Monitors in den Softwarelebenszyklus von \eigen{enSuite},
+wird sichergestellt, dass  das Programm regelmäßig gewartet und gepflegt wird.
+
+
+\section{Anforderungen}
+Für ein Tracing-System gibt es keine Standard-Software. Dies wäre auch schwer
+Umzusetzen, da die Anforderungen je nach Problemstellung sehr verschieden sein
+können. Allerdings gibt es in der Fachliteratur mehrere Richtlinien, die zu
+einem erfolgreichen Konzept verhelfen. Auf diese allgemeinen Anforderungen
+soll zunächst eingegangen werden. Im Anschluss geht es um die speziellen 
+Anforderungen für dieses Projekt.
+
+\subsection{Allgemeine Anforderungen an ein Tracing-Konzept}
+\subsubsection{Zeitstempel}
+Zum Nachvollziehen des Programmablaufs, müssen die eingehenden Traces
+zeitlich geordnet werden. Dazu ist ein \highl{hochauflösender Zeitstempel}
+erforderlich. Da in der Sekunde durchaus mehrere Nachrichten verarbeitet werden,
+muss der \emph{Timestamp} Millisekunden unterstützen. Der klassiche Datentyp
+\texttt{time\_t} der Programmiersprache C/C++ liefert aber nur die vergangenen
+Sekunden seit dem 01.01.1970. Um eine höhere Präzision zu erhalten, verwendet
+man deshalb die \highl{Clocks} eines Geräts. Die Clock-Rate ist die Frequenz mit
+der eine CPU läuft. Mit einem Teiler kann man daraus einen für die Anwendung
+hinreichend genauen Wert(\highl{Ticks}) ableiten.
+Bei einer 100 MHz CPU und einem Teiler von 256 erhält man so: \newline
+\Code{100.000.000 : 256 = 390.625 TICKS\_PRO\_Sekunde }.
+\newline
+
+Es sind drei Schritte nötig um die Ticks des Systems für einen hochauflösenden
+Zeitstempel zu nutzen:
+\begin{enumerate}
+  \item Das Gerät sendet zu Beginn die \highl{aktuelle Uhrzeit} und die
+  \highl{vergangenen Ticks seit dem Systemstart} zum Client.
+  \item An jedem Trace werden die \highl{aktuellen Ticks} angehängt
+  \item Aus der Differenz der Ticks im Verhältnis zu einer Milisekunde, kann
+  dann ein sehr genauer \highl{Offset}\footnote{1 tick = 2,56 $\mu$s}
+  berechnet werden, welcher die vergangenen Milisekunden seit Gerätstart
+  wiedergibt. Durch Addition auf die Referenz-Uhrzeit erhält man so einen
+  hochauflösenden Zeitstempel.
+\end{enumerate}
+Eine Methode um aus den übermittelten Ticks den Zeitstempel zu erhalten, könnte
+so aussehen:
+\begin{minted}{java}
+    private long getTimestamp(long pTicks) {
+        return (utc*1000 + (( pTicks - ticks) / TICKS_PER_MILISECOND ) );
+    }
+\end{minted}
+
+
+\subsubsection{Trace-Level} 
+\label{lbl:Trace-Level}
+Trace-Level dienen zur \highl{Priorisierung} von Informationen.
+Jeder Trace erhält einen Level zugewiesen, um die \highl{Wichtigkeit} dieser
+Nachricht anzuzeigen. Je nach Implementierung unterscheidet sich die Anzahl der
+Level. Für dieses Projekt sind insgesamt sieben Level definiert worden. Tabelle
+\ref{tab:TraceLevel} zeigt die Abkürzungen und die vorgesehene Verwendung für
+jeden Level.
+\\
+\begin{table}
+	\begin{tabular}{ c l p{10cm} }
+		\toprule
+		\textbf{Nummer} & \textbf{Level} & \textbf{Bemerkung} \\
+		\midrule
+		1 & EMERG 		& Schwerwiegender Systemfehler. Betrifft alle laufenden Prozesse
+		und führt meist zum Absturz. \\
+		\cmidrule{2-3}
+
+		2 & CRIT	 	& Kritischer Systemfehler, welcher sofort behoben werden sollte, da
+		sonst z.B. Datenverlust droht. \\
+		\cmidrule{2-3}
+
+		3 & ERR			& Fehler, welcher behoben werden sollte, aber nicht zum Absturz
+		führt \\
+		\cmidrule{2-3}
+
+		4 & WARN		& Warnung, dass ein Fehler auftreten könnte, wenn Programm
+		fortgeführt wird \\
+		\cmidrule{2-3}
+
+		5 & NOTICE		& Ungewöhnliche Ereignisse, welche nicht zum Fehler führen und
+		kein Eingreifen erfordert \\
+		\cmidrule{2-3}
+
+		6 & INFO		& Normale Nachricht. Ausgabe von gemessenen Werten und Ereignissen
+		\\
+		\cmidrule{2-3}
+
+		7 & DEBUG		& Ausgaben für Entwickler zum Debuggen. Low-Level-Meldungen wie
+		Aufruf und Rückkehr von System-Calls. \\
+
+	\end{tabular}
+	\caption{Trace-Level}
+	\label{tab:TraceLevel}
+\end{table}
+Höhere Trace-Level schließen alle unteren Level mit ein, d.h. Fehler
+werden auf dem Level 4 ebenfalls mit ausgegeben. Auf dem höchsten Level 7 werden
+alle möglichen.\footnote{wörtlich gemeint} Traces
+ausgegeben. Von da ist nur eine \highl{Reduzierung} der Informationen möglich.
+So ein additives System ist schon sinnvoll, da der Entwickler beim Debugging ja zusätzlich auch alle Fehler, Warnungen und Infos
+sehen will. Eine Erhöhung des Levels ist  gleichbedeutend mit der \highl{Konzentration} von Informationen.
+
+\subsubsection{Einfache Anwendung}
+Um Traces auszugeben, benutzen die Entwickler Makro-Funktionen im Programm-Code.
+Diese besitzen die gleichen Namen wie die Trace-Level in der Tabelle.
+Statt \Code{printf()} werden \Code{emerg()}, \Code{crit()}, \Code{err()}, \ldots und \Code{debug()} verwendet.
+Die Verwendung ist dabei die gleiche wie bei der \Code{printf}-Funktion, sodass
+in dem Formatierungsstring auch alle gängigen Datentypen wie \texttt{char, short int,
+int, long int, float, double und string} benutzt werden könnnen. 
+
+Trace Level werden statisch zur Kompilierungszeit auf Datei-Ebene gesetzt. Ein
+einfaches \texttt{define} im Quellcode regelt, ob überhaupt bei diesem Level
+etwas ausgegeben werden soll. Zur Laufzeit ist es somit nicht möglich einen
+Level einzustellen, welcher unter dem statischen liegt. Der Standard Level für
+die meisten Module ist 4, sodass nur Warnungen und Meldungen darüber ausgegeben
+werden. In dem Trace-Monitor lassen sich die Level \highl{dynamsich zur
+Laufzeit} auf Modul- und Datei-Ebene einstellen. Wird der Level eines Moduls
+gändert, betrifft dies eben nur die zugehörigen Dateien.
+
+
+\subsection{Spezielle Anforderungen an dieses Tracing-Konzept}
+Die \highl{Formatierungsstrings} werden \highl{nicht auf dem Gerät gespeichert}.
+Dieses Vorgehen bringt mehrere Vorteile mit sich. Zum einen müssen die
+Nachrichten nicht mehr auf dem Gerät formatiert werden, wordurch \highl{Zeit und
+Rechenleistung} eingespart wird. Bei den vielen Ausgaben fällt somit die
+\texttt{printf}-Funktion nicht mehr zur Last. Für einen Desktop-Rechner stellt
+dies natürlich kein Problem dar. 
+Zum anderen ist das Versenden langer Debugging-Nachrichten über das
+Netzwerk nicht performant. Will man Geräte aus der Ferne auslesen muss man
+bedenken, dass es nicht überall schnelle Anbindungen gibt. Viele eingebette
+Geräte sind auch heute noch über langsame Modems mit dem Netz verbunden. 
+Neben der Rechenleistung ist der Speicherplatz eine knappe Ressource, welcher
+durch die Auslagerung der Strings geschont wird.
+
+Die Lösung des Problems besteht darin, die Formatierungsstrings in
+\highl{Trace-Dateien} auszulagern. Trace-Dateien sind nur auf dem lokalen
+Rechner des Entwicklers gespeichert.
+Das Gerät überträgt nur die variable Parameterliste und die
+Referenz auf die ursprüngliche Nachricht. Handelt es sich um einen
+statischen Text ist die Parameterliste leer. \highl{Erst auf der Empfangsseite
+wird die Nachricht zusammengebaut}, indem der Trace-Monitor die Trace-Dateien
+einliest und den Formatierungsstring mit den Parametern verbindet.
+Jede Nachricht beinhaltet außerdem eine \highl{Zeilennummer}, damit der
+Entwickler über den Trace-Monitor direkt zur passenden Stelle im Code springen kann.
+
+Auf dem Gerät kann ein Modul mehrmals gestartet werden. Will man die laufenden
+\highl{Instanzen unterscheiden können}, sollte man nicht den Modulnamen
+heranziehen, da dieser bei allen Instanzen gleich ist. Jede Instanz erhält
+deshalb eine eigene, \highl{eindeutige Modul-ID}.
+
+
+
+\subsection{Tracing-Monitor} 
+Nach dem \highl{Verbindungsaufbau} muss in regelmäßigen Abständen ein
+Lebenszeichen zum Gerät gesendet werden, damit die Verbindung nicht unterbrochen
+wird. Ein Watchdog auf dem Gerät muss innerhalb eines bestimmten Intervalls
+dieses \emph{Idle}-Signal erhalten. Anderfalls trennt er die Verbindung zu dem
+Client.
+
+Unmittelbar nach dem Verbindungsaufbau muss der Trace-Monitor eine
+\highl{Modulliste anfordern}. Diese Liste beinhaltet alle zur Zeit laufenden
+Module auf dem Gerät. Befindet sich das Gerät noch im Hochlauf, können durchaus
+noch Module hinzukommen. Diese werden dann automatisch nachgeschickt, sodass
+sich der Trace-Monitor nicht darum zu kümmern braucht.
+
+Außerdem soll der \highl{Trace-Level} einer Datei abgefragt und gesetzt werden
+können. Dies ist eine wichtige Aufgabe, da sich so die Informations\-menge
+einstellen lässt. Statt einzelne Dateien abzufragen, soll dies auch für ein
+ganzes Modul funktionieren. Da ein Modul selbst keinen Trace-Level besitzt,
+werden alle Level der zum Modul gehörigen Dateien übertragen bzw. gesetzt.
+
+Die wichtigste Aufgabe ist wohl der \highl{Empfang und die Darstellung von
+Trace-Nachrichten}. Dafür sind zwar viele Prozesse im Hintergrund notwendig, der
+Benutzer sieht allerdings nur diesen Bereich. Deshalb muss diese Hauptfunktionen
+auch stabil und zuverlässig funktionieren. Die Oberfläche soll schnell reagieren
+und die Traces je nach Wichtigkeit visuell hervorheben. Dabei sollen möglichst
+schwache Hintergrund\-farben verwendet werden. Als Vorgabe soll das
+Netzwerk-Analyseprogramm \emph{WireShark} dienen.
+
+Bei der Anzeige der Trace-Nachrichten sollen nur so viele Informationen wie
+nötig angezeigt werden. Tabelle~\ref{lbl:TraceTable} dient als Vorlage für eine
+sinnvolle Spalten\-belegung.
+\begin{table}
+\begin{tabular}{| c | c | c | c | c | c |}
+\hline
+\rowcolor{architectBrown1}
+\textbf{Timestamp} & \textbf{Modul-ID} & \textbf{File} & \textbf{Line}
+& \textbf{Trace-Level} & \textbf{Trace-Nachricht} \\
+\hline
+\end{tabular}
+\caption{Notwendige Spalten in der Trace-Tabelle}
+\label{lbl:TraceTable}
+\end{table}
+
+
+Die \highl{Anzeige} von Traces muss sich \highl{stoppen lassen}, damit sich der
+Entwickler ein bestimmtes Ereignis genauer ansehen kann. Im Hintergrund werden jedoch weiterhin
+alle Traces gespeichert. Beim Aktualisieren der Anzeige erscheinen dann unter
+Umständen sehr viele neue Einträge in der Tabelle. 
+
+Weiterhin muss eine \highl{Filterung} aller gespeicherten Traces möglich sein.
+Dadurch lassen sich z.B. nur Nachrichten einer bestimmtes Programmzeile
+anzeigen. Über einen Dialog sollen sich mehrere Filterkriterien speichern lassen.
+Dem Entwickler steht zur Wahl ob er die Bedingungen miteinander ODER- oder
+UND-verknüpfen will. Gesetzte Filter sollen auch für eingehende Traces gelten.
+Trifft keine Bedingung auf eine neue Nachricht zu, so wird diese auch nicht angezeigt.
+
+Über die \highl{Zeilennummer} in einer Trace-Nachricht soll es möglich sein,
+direkt zu der passenden Stelle im Programmcode zu "`springen"'. Der Editor
+soll dabei frei konfigurierbar sein. 
+
+Da das Programm \eigen{enSuite} in Java geschrieben ist und der Trace-Monitor
+integriert werden soll, muss als Programmiersprache ebenfalls Java verwendet
+werden. Bereits vorhandene Bibliotheken sollen so gut es geht genutzt werden.
+Das bestehende Datenbank\-system kann und soll zur Speicherung der Traces
+mitbenutzt werden.
+
+
+\section{Konzept}
+Nachfolgend soll ein Konzept entwickelt werden, anhand dessen sich das
+Tracing-System später umsetzen lässt. Die Zusammenspiel der Trace-Tools und die
+Abläufe beim Tracing sollen zunächst festgelegt werden um dann im Anschluss ein
+geeignetes Netzwerk-Protokoll für die Kommunikation erarbeiten zu können.
+Außerdem wird für die zusammenhängende Speicherung von Daten ein Datenmodell
+benötigt. Aus dem Datenmodell lässt sich dann später die Datenbank entwerfen. 
+
+
+\subsection{Trace-System}
+Bild~\ref{fig:TraceSystem} zeigt das Deployment-Diagramm des Trace-Systems,
+welches eine besser Übersicht verschaffen soll. Eingezeichnet sind die
+physikalischen Geräte und die darauf laufenden Softwarekomponenten.
+Auf dem lokalen Rechner ist zum Übersetzen der Quellcodes die \eigen{Multi-IDE}
+der Firma \eigen{Green Hills Software} installiert. Um das Gerät zu
+konfigurieren ist die Programmkollektion \eigen{enSuite} installiert, welche durch den Trace-Monitor
+dazu befähigt wird Traces zu empfangen. Auf dem Gerät wartet der Tracer auf
+eingehende Verbindungen und puffert die Nachrichten der Module solange noch kein
+Client verbunden ist. 
+\begin{figure}[H]
+		\includegraphics[width=1.0\textwidth]{svg/DeploymentView.png}
+		\caption{Trace Systems}
+		\label{fig:TraceSystem}
+\end{figure}
+
+% Gesamtübersicht
+Um eine Gesamtübersicht über den genauen Ablauf der Prozesse zu geben, wird
+folgendes, alltägliches Szenario angenommen: Ein Entwickler hat Änderungen an
+einem Modul vorgenommen und will es nun zur Laufzeit auf Fehler überprüfen.
+In der Multi-IDE startet er dazu zunächst den Buildprozess. Dadurch wird
+aber nicht sofort der Compiler aufgerufen sondern der \highl{Trace-Parser}.
+Jedes Verhalten der IDE lässt sich durch Scripte steuern. In diesem Fall wurde
+der Build-Vorgang leicht modifiziert um den Trace-Parser aufzurufen.
+Der Trace-Parser liest daraufhin die C- und C++-Dateien ein und sucht nach
+Debugging-Ausgaben. Die Formatierungsstrings werden daraufhin in
+Trace-Dateien ausgelagert und an der Stelle durch eine Referenz auf die
+urprüngliche Nachricht ersetzt. Anstatt die Änderung in der Original-Datei zu
+speichern, wird eine temporäre Datei zum Übersetzen angelegt. Diese TC-Dateien
+werden dann dem Compiler übergeben, welcher daraufhin ein Image erzeugt.
+
+Das Image wird auf eine SD-Karte überspielt und anschließend auf das Board des
+Gerätes gesteckt um davon zu Booten. Während des Boot-Vorgangs kann bereits der
+Trace-Monitor gestartet werden, da das Betriebssystem diese Task zu erst
+startet. Wurde ein Modul erfolgreich geladen, sendet der Tracer die
+Modul-Informationen zum Monitor. Über den Modul-Namen kann dieser nun die
+passende Trace-Datei finden und parsen. Die Inhalte werden in einer Datenbank
+gespeichert. Der Trace-Monitor kennt nun alle zum Modul dazugehörigen Dateien
+und dessen Nachrichten.
+Sendet das neu übersetzte Modul nun einen Trace, setzt der Trace-Monitor die
+Nachricht auf dem PC zusammen und zeigt diese in einer Tabelle an.
+
+Der Entwickler erkennt anhand der Nachrichten, ob das Modul
+korrekt arbeitet. Auch das Fehlen eines Traces kann schon viel Aussagen. Wird ein Fehler
+erkannt, kann der Entwickler direkt über den Trace-Monitor in die passende Zeile
+springen. Ist der Fehler ausfindig gemacht und behoben, kann das System
+erneut übersetzt werden und die Prozedur beginnt von neuem.
+
+
+\subsection{Trace-Dateien}
+Trace-Dateien speichern die Formatierungs\-strings und lösen somit das
+Performance\-problem auf den Geräten. Die Struktur der Dateien muss
+ein einfaches Wiederauf\-finden der Formatierungs\-strings ermöglichen.
+Nur anhand der Modul-, File- und Trace-ID muss der
+Formatierungs\-string gefunden werden. 
+
+Pro Modul wird eine \highl{Trace-Datei} angelegt, da ein Modul die höchste
+Instanz ist, welche geloggt werden kann. Abb.~\ref{fig:traceFiles}
+veranschaulicht die Relation zwischen Modul, Dateien und Traces.
+Da zwei Beziehungen vorhanden sind, müssen auch zwei Informationen in
+der Trace-Datei gespeichert werden. Einmal die Information, welche Dateien
+das Modul besitzt (\highl{Trace-File-Information}) und dann, welche Traces eine
+bestimmte Datei besitzt (\highl{Trace-Data-Information}).
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\textwidth]{svg/TraceFiles.png}
+		\caption{Relationen der Trace-Daten}
+		\label{fig:traceFiles}
+\end{figure}
+Der Aufbau soll Anhand des Moduls \emph{FlowConv} veranschaulicht werden.
+Der Datei\-name, in diesem Fall \texttt{FlowConv-Release\_02-02-B.trace}, setzt
+sich aus dem Modul\-namen und der Versions\-nummer zusammen. Das Gerät
+übermittelt diese beiden Informationen, sodass der Trace-Monitor nurnoch den
+Datei\-namen richtig zusammen\-bauen muss. 
+In der ersten Zeile der Auflisting~\ref{lst:traceFile} wird der indexierte
+Pfad zu einer Datei gespeichert. Die ID dient den folgenden Zeilen zur
+Verknüpfung der Traces mit der Datei. Der Trace-Nachricht bekommt so ihren
+Ursprung zugewiesen. Zeile 1 ist demnach eine Trace-File-Information.
+Die Traces werden ebenfalls indexiert, zu sehen in der zweiten Spalte.
+\begin{listing}[H]
+\begin{pythoncode}
+''' 
+Aufbau einer Trace File Information
+<File Index>: <File Name>
+
+Aufbau einer Trace Data Information:
+<File Index>. <Trace Index>. <Line>. <Level>: <Formatstring>
+'''
+1: src/Calculate/Calculate_Vm.c # File Info
+1. 1. 69. 7: %lld 0x%08x %f %f  # Data Info
+1. 2. 71. 7: FlowConv-Q %f
+2: src/Calculate/Calculate_Vc.c 
+2. 3. 240. 7: Calculate_Vc      
+3: src/Calculate/Calculate_VbEM.c
+3. 3. 108. 7: Calculate_VbEM
+4: src/Calculate/Calculate_Cnt.c
+4. 5. 63. 3: Wrong switch %d
+4. 6. 84. 3: Wrong switch %d
+4. 7. 104. 7: Calculate_Cnt
+5: src/Calculate/Calculate.c
+5. 8. 29. 7: Parameter changed
+6: src/FlowConv.c
+6. 9. 73. 7: %d %d'
+6. 10. 92. 7: Freeze old %d
+6. 11. 108. 7: %d %d
+6. 12. 227. 7: InitializeDOs in FlowConv
+6. 13. 230. 1: (%d) %s
+6. 14. 235. 3: %s: no Tree available
+\end{pythoncode}
+\caption{FlowConv-Release\_02-02-B.\textbf{trace}}
+\label{lst:traceFile}
+\end{listing}
+Als Trennzeichen wurde für die Indizes ein Punkt und für den Formatierungsstring
+ein Doppelpunk verwendet. Beim extrahieren des Formatierungsstring muss
+darauf acht gegeben werden, dass dieser auch oben genannte Trennzeichen
+beinhalten kann. In Java sollte die Aufteilung des Strings durch einen Parameter
+limitiert werden: \newline
+\Code{String[] idsAndFormatString = line.split(":", 2)}
+
+
+
+\subsection{Trace-Parser}
+Der Trace-Parser lagert Formatierungsstring in Trace-Dateien aus
+und wird kurz vor dem Übersetzungslauf aufgerufen. Um den Entwickler dabei nicht
+zu belasten, wurde das Tool in die Multi-IDE eingebaut.
+Beim Einlesen einer Quellcode-Datei sucht der Parser bestimmte Token, nämlich
+genau die Namen der sieben Makro-Funktionen: \Code{emerg()}, \Code{crit()},
+\Code{err()}, \Code{warn()}, \Code{notice()}, \Code{info()}und \Code{debug()}.
+Bei einem Fund werden Parameter innerhalb der Klammern ersetzt. Wieder soll ein
+Auszug aus dem Modul \emph{FlowConv} als Beispiel dienen. 
+\begin{listing}[H]
+\begin{ccode}
+  if ( (pTheFbDoTree = FbDo_GetTree ( pmyInfo )) == NULL )
+  {
+    err("%s: no Tree available", pmyInfo->m_Descr.m_AsName);
+    return Failure;
+  }
+\end{ccode}
+\caption{Auszug aus FlowConv.\textbf{c}}
+\label{lst:flowConvc}
+\end{listing}
+\begin{listing}[H]
+\begin{ccode}
+  if ( (pTheFbDoTree = FbDo_GetTree ( pmyInfo )) == NULL )
+  {
+    err(0x01400CC7, 0x00000004, pmyInfo->m_Descr.m_AsName);
+    return Failure;
+  }
+\end{ccode}
+\caption{Auszug aus FlowConv.\textbf{tc}}
+\label{lst:flowConvc}
+\end{listing}
+In Zeile~3 hat der Trace-Parser den Funktions\-aufruf angepasst und den
+Formatierungs\-string ausgelagert. Der erste Parameter der neuen
+Makro-Funktion ist vom Typ Integer und speichert \highl{File-ID, Trace-ID,
+Zeilennummer und Trace-Level}. Für die File-ID werden 9 Bits aufgebracht, sodass
+pro Modul 512 Dateien gespeichert werden können. Die Zahl ist für die relativen
+kleinen Modul recht hoch, allerdings besitzt der Kernel knapp 500 Dateien. Die
+nächsten 12 Bits werden für die Trace-ID benötigt, sodass eine Datei 4096
+Trace-Nachrichten beinhalten kann. Für die Kodierung der Trace-Level sind 3 Bits
+notwendig.
+
+Der zweite Parameter, ebenfalls vom Typ Integer, wird dazu benutzt eine
+\highl{Typenliste} zu übermitteln. Der Trace-Monitor verwendet die Liste um aus
+dem Datenfeld später die richtigen Werte herauszulesen. Das Datenfeld ist von
+außen betrachtet bloß ein BLOB (Binary Large Object) in dem alle Parameter
+hintereinander stehen. Diese Liste stellt somit die nötigen Informationen
+bereit, die einzelnen Parameter wieder auszupacken.
+Insgesamt werden sechs Datentypen unterstüzt, sodass 3 Bit für die Kodierung
+verwendet werden müssen. Da die Größe auf 32-Bit beschränkt ist, können demnach
+maximal 10 Parameter eingesetzt werden. Den elften Parameter würde der
+Trace-Parser einfach verwerfen. In dem Trace-Monitor führt dieser Umstand dann
+zu einem Formatierungs-Fehler während des Zusammenbauens.
+\begin{table}[htpb] 
+\centering 
+\begin{tabular}{ lccl }
+	\toprule
+	\textbf{Wert} & \textbf{Datentyp} & \textbf{Beschreibung} & \textbf{Größe}  \\
+	\midrule
+	
+	0 & \texttt{none} & keine Parameter \\
+	1 & \texttt{string} & Terminierter C-ASCII-String & (strlen+1) Byte \\
+	2 & \texttt{double} & 64-Bit Fließkommazahl (IEEE 754) & 8 Byte \\
+	3 & \texttt{long int} & 64-Bit Integer-Zahl & 8 Byte \\
+	4 & \texttt{int} & 32-Bit Integer-Zahl & 4 Byte \\
+	5 & \texttt{short int} & 16-Bit Integer Zahl & 2 Byte \\
+	6 & \texttt{char|byte} & 8-Bit Integer-Zahl & 1 Byte  \\
+	
+\end{tabular}
+\caption{Kodierung der unterstützten Datentypen}
+\label{tbl:Datentypen}
+\end{table}
+
+
+
+\subsection{Datenmodell}
+Alle Traces sollen in einer \highl{Datenbank} gespeichert werden, da das bloße
+Speichern in einer GUI-Komponente(z.B. JTable) weder \highl{performant} noch
+anpassungsfähig ist. Über die \emph{Structured Query Language} (SQL) lassen sich
+komplexe Abfragen tätigen, sodass der Benutzer nur gewünschte Informationen
+angezeigt bekommt. Zur Anzeige der Traces müssen diese vorher über das
+Datenbanksystem abgefragt werden. Zur Installation eines \highl{Filters} fügt
+man zu dieser Abfrage weitere Bedingungen hinzu. Vorerst ist keine dauerhafte
+Speicherung der Traces geplant. Um die Performance noch ein bisschen zu
+steigern, wird die Datenbank deshalb komplett im Speicher gehalten.
+
+Das Datenbank-Schema auf Bild~\ref{fig:DatenbankSchema} umfasst insgesamt fünf
+Tabellen. Da eine n:m Beziehung zwischen Modulen und Dateien vorliegt, befindet
+sich zwischen ihnen eine Role-Table. 
+Die Tabelle \highl{MODULE\_TRACE} dient zum Speichern der Traces und befindet
+sich im Knotenpunkt der anderen Tabellen.
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth]{svg/DatenbankSchema.png}
+		\caption{Datenbank-Schema}
+		\label{fig:DatenbankSchema}
+\end{figure}
+
+
+\subsection{Trace Monitor Protokoll}
+Zum Auslesen von Trace-Nachrichten aus einem NPP-Gerät wird ein Protokoll
+auf Anwendungsebene benötigt. Im TCP/IP-Netzwerk wird hierzu eine
+TCP-Verbindung (transmission control protocol, RFC 793 \& RFC 1323) auf Port
+19790 benutzt. Da die Portnummer über 1024 und unter 49151 liegt, zählt dieser zum Bereich der
+User Ports dazu. User Ports können ohne Zustimmung der IETF frei gewählt werden.
+Bevor Traces ausgelesen werden können, hat das Protokoll viele kleine Aufgaben
+zu erfüllen. Nach dem \highl{Verbindungsaufbau} muss es in bestimmten
+Abständen ein \highl{Lebenszeichen zum Gerät senden}, damit der Watchdog auf dem
+Gerät die Verbindung nicht trennt. Außerdem wird über das Protokoll auch die
+\highl{Zeit sychronisiert}. Der Client fordert in erster Linie Informationen an,
+welche dann vom Server geliefert werden. Kurz nach dem Verbindungsaufbau fordert
+der Client eine Modulliste an und wenig später auch die Trace-Level der Dateien.
+Eine Ausnahme stellen die Traces selbst dar, welche ohne Aufforderung vom Gerät gesendet werden.
+
+Das \highl{Trace Monitor Protokoll (TMP)} wird als zustandsloses Protokoll
+entworfen. Beide Kommunikationspartner können jederzeit beliebige Daten senden.
+Automatenfehler können nicht auftreten. Diesen Vorteil erkauft man sich durch
+einen kleinen Mehraufwand bei der Auswertungs der Token. Es ist Aufgabe des
+Empfängers, die Daten herauszufiltern, an denen er interessiert ist.
+
+Daten werden in einem festen Format übertragen (Tab.~\ref{tbl:TraceFormat}). So
+wird sichergestellt, dass der Kommunikationspartner die Daten versteht und sich nicht im Strom verliert. Würde
+ein Partner beispielsweise mehr Daten versenden als von der Gegenstelle erwartet
+wird, so kommt die ganze Kommunikation aus dem Takt.
+\begin{table}[H]
+\centering
+
+\begin{tabular}{| C{2cm} | C{2cm} | C{8cm} |}
+	\hline
+	\multicolumn{2}{|c|}{\cellcolor{architectBrown1}\textbf{Header}} &
+	\cellcolor{architectBrown2}\textbf{Payload}
+	\\
+	\hline
+	Token & Länge & Datenfeld \\
+	1 Byte & 1 Byte & x Bytes \\
+	\hline
+\end{tabular}
+\caption{Trace Format}
+\label{tbl:TraceFormat}
+\end{table}
+Damit der Empfänger sofort weiß, ob eine Nachricht relevant oder irrelevant ist,
+dient das erste Byte, genannt Token, zur Identifikation der gesamten
+Trace-Nachricht. Auch die Länge der folgenden Daten wird immer mit übertragen,
+selbst wenn es keine Daten gibt. In diesem Fall wird einfach die Länge 0
+übertragen. So kann der Trace-Monitor nach dem Lesen der ersten 2 Bytes
+bestimmen, ob die nachfolgenden Bytes übersprungen werden können oder nicht.
+Beim Übersprüngen werden die Daten gelesen aber nicht gespeichert. Passende
+Funktionen gibt in der Socket-Klasse.
+
+Die Tabelle~\ref{tbl:tokenIds} zeigt die sieben verschiedenen Token und wie sie
+kodiert werden. Aus Platzgründen steht in der Spalte der hexadezimale Wert des
+Bytes. In dem Token gibt das dritte Bit die Richtung an, also ob die Nachricht
+von dem Gerät oder von dem PC geschickt wird. Deshalb springt die erste Ziffer
+der Id ständig von 4 auf 6. Das Richtungs-Bit befindet sich an dieser Position
+um die ID auch als passenden ASCII Buchstaben schreiben zu können. Über Telnet
+lässt sich so auch ohne Client mit dem Gerät, über die Tastatur, kommunizieren.
+Ein Großbuchstabe steht so für ein Client-Kommando und ein Kleinbuchstabe für
+die Antwort des Servers. Hierzu ein kleines Beispiel anhand des Idle-Tokens mit
+der ID 0x49 bzw 0x69:
+\begin{table}[H]
+\begin{tabular}{|c|c|c|c||c|c|c|c|l|}
+\hline \rowcolor{architectBrown1}
+0 & \color{red}{1} & 0 & 0 & \color{blue}{1} & 0 & 0 & \color{blue}{1} &
+\cellcolor{white}Trace-Monitor sendet Idle-Token, Direction-Bit auf 1 \\
+\hline \rowcolor{architectBrown1}
+0 & \color{red}{0} & 0 & 0 & \color{blue}{1} & 0 & 0 & \color{blue}{1} &
+\cellcolor{white}Gerät bestätigt Idle-Token, Direction-Bit auf 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[H] 
+\centering 
+\begin{tabular}{ llcl }
+	\toprule\rowcolor{architectBrown1}
+	\textbf{Token} & \textbf{Id} & \textbf{Länge} & \textbf{Daten}  \\
+	\midrule
+	VersionInfo & 0x43 ('C') & 01 & Protokoll Version  \\
+	\cmidrule{2-4}
+	
+	TimeSync & 0x63 ('c') & 0A & UTC und CPU-Ticks  \\
+	\cmidrule{2-4}
+	
+	\multirow{2}{*}{Idle} & 0x49 ('I') & 00 &   \\
+	 & 0x69 ('i') & 00 &   \\
+	 \cmidrule{2-4}
+	
+	TraceMessage & 0x74 ('t') & xx & \underline{\color{blue}{Trace-Nachricht}} \\
+	\cmidrule{2-4}
+	
+	\multirow{3}{*}{ModulInfo} & 0x4D ('M') & 00 &  \\
+	& 0x4D ('M') & 01 & Modul-ID  \\
+	& 0x6D ('m') & xx & Modul-ID + Name inkl. Version \\
+	\cmidrule{2-4}
+	
+	\multirow{6}{*}{LevelInfo} & 0x4C ('L') & 00 	\\
+	& 0x4C ('L') & 01 & Modul-ID  \\
+	& 0x4C ('L') & 02 & File-ID  \\
+	& 0x4C ('L') & 03 & File-ID + Trace-Level  \\
+	& 0x6C ('l') & 03 & File-ID + Trace-Level  \\
+	& 0x6C ('l') & xx & Modul-ID + Trace-Levels \\
+	\cmidrule{2-4}
+	
+	\multirow{2}{*}{Disconnect} & 0x44 ('D') & 00 \\
+	& 0x64 ('d') & 00 & \\
+
+	\bottomrule
+\end{tabular}
+\caption{Token IDs}
+\label{tbl:tokenIds}
+\end{table}
+Es sollen nicht auf alle Datenfelder eingegangen werden, da diese zum größten
+Teil selbsterklärend sind. Das Datenfeld der Trace-Nachricht ist allerdings
+komplexer und soll nun beschrieben werden.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{| c | c | c | l |}
+\hline
+\rowcolor{architectBrown1}
+\textbf{Feld} & \textbf{Bits} & \textbf{Name} & \textbf{Beschreibung} \\
+\hline
+
+1 & 48  & Timestamp & Beinhaltet die vergangenen Ticks seit Gerätestart \\
+
+
+2 & 32  & Unique IDs & Module-,Trace-,File-Index, Zeilennr., Trace-Level \\ 
+
+
+3 & 32  & Argumenten Liste & Speichert bis zu 10 Datentypen
+(s.Tab.~\ref{tbl:Datentypen})
+\\
+
+
+4 & xx  & 1. Argument & siehe oben \\
+
+
+5 & xx  & 2. Argument & \\
+
+
+: & xx  & : & \\
+
+
+13 & xx  & 10. Argument & \\
+
+\hline
+\end{tabular}
+\caption{Format einer \underline{\color{blue}{Trace-Nachricht}}}
+\label{tbl:TraceMessageFormat}
+\end{table}
+
+
+\section{Durchführung}
+Als praktische Arbeit soll der Trace-Monitor entwickelt werden. Da das erlernte
+Wissen in der IT-Branche schnell veraltet ist, sollen bei der Umsetzung aktuelle
+Programmier-techniken angewendet werden. Dadurch kann sichergestellt werden,
+dass die Anwendung auch noch Jahre später ohne größere Anpassungen funktioniert.
+Die Standard Edition der Java Plattform (Java SE) bringt schon viele
+Features im Bereich der Netzwerk-, Web- und Datenbank\-programmierung mit.
+Seit dem Kauf von Oracle im Jahre 2009 sind viele Neuheiten in Java
+hineingeflossen und zum Standard geworden. Sehr gute Neuigkeiten für Entwickler,
+die vorher ein Risiko mit \emph{3rd party software} eingehen mussten. Durch
+Aufnahme neuer Funktionen bietet Oracle den Java-Kunden Sicherheit, da die
+Schnittstellen oft über Jahre hinweg stabil bleiben. 
+
+Ein neues Feature ist die \emph{Java Persistence API (JPA)}, welche im
+Trace-Monitor die Speicherung der Traces ermöglichen soll. Deshalb wird in
+diesem Kapitel zunächst etwas Grundlagenforschung betrieben, bevor es an die
+konkrete Umsetzung geht.
+
+
+
+
+\subsection{Einführung in die Java Persistence API}
+\label{lbl:JPA}
+Für dieses Projekt soll die \emph{Java Persistence API (JPA)} verwendet werden,
+welche seit Java SE 5 fester Bestandteil dieser Plattform ist. Durch JPA wird
+das Problem der \highl{objekt\-relationalen Abbildung} gelöst. Tabellen einer
+Datenbank und Laufzeit-Objekte in Java besitzen eine starke Ähnlichkeit: beides
+sind Container für Attribut\-werte. 
+Eine \highl{automatische Überführung ineinander} liegt also nahe.
+"`The domain model has a class. The database has a table. They look pretty
+similar. It should be simply to convert one to the other
+automatically."'\footnote{\cite[S. 2]{001}} In der Tat lassen sich die
+Attribute einer Klasse sehr gut auf Spalten einer Tabelle abbilden. Die Technik bei der ein Objekt
+automatisch auf eine Relation\footnote{Tabelle einer Datenbank} überführt wird,
+nennt sich \emph{Object-Relation Mapping} oder einfach ORM. Programmierern wird
+dabei viel Arbeit abgenommen: um die Ergebnisse einer SQL-Abfrage zurück in
+etwas Objekt-Orientiertem zu konvertieren bedarf es keiner \emph{Data Access
+Objects (DAO)} mehr. In JPA lieft eine Abfrage über JDBC nun direkt ein Objekt zurück.
+
+
+Die JPA-Entwickler haben ein Manifesto veröffentlich, wie ein ideales
+ORM-Framework aussehen sollte:
+\begin{compactitem}
+\item Objekte statt Tabellen. Anwendungen sollen nach dem Domain Modell
+entwickelt werden. Abfragen werden deshalb nicht mehr in eine
+relationale- sondern in eine objektorierntiere Sprache ausgedrückt.
+\item Einfachheit statt Ignoranz. ORM verhindert keine Mapping Fehler. Es soll
+Entwicklern dienen, die sich mit relationalen Datenbanken auskennen, aber nicht
+tausende Zeilen Code für ein bereits gelöstes Problem schreiben wollen.
+\item Unaufdringlichkeit statt Transparenz. Die Anwendung muss jederzeit die
+Kontrolle über die zu speichernden Daten haben, weshalb die Persistenz-Lösung nicht
+vollständig transparent sein kann. Allerdings lässt sie sich so gestalten, dass
+das Domänen-Modell nicht "`gestört"' wird. Es sollen keine Interfaces
+implementiert oder Klassen vererbt werden um Objekte persistent zu machen.
+\item Aus Altdaten neue Objekte erzeugen. Die meisten Applikationen müssen ein
+bestehendes relationales Datenbank Schema verwenden, anstatt ein neues zu
+entwerfen. Deshalb ist die Unterstützung für Altedaten der wichtigste
+Anwendungsfall. Ein Datenbankschema kann durchaus die Lebenszeit der Entwickler
+überdauern.
+\item Wenig Overhead. Entwickler haben Probleme zu lösen und benötigen dazu
+angemessene Features. Es sollen ihnen ein leichtgewichtiges Persistenz Modell
+angeboten werden, welches die Standard-Aufgaben performant erledigt und
+minimale Zeilen an Code benötigt. Für Spezialfälle gilt \emph{Configuration by
+Exception}.
+\item Mobilität. Die Applikation entscheidet wo die Daten gespeichert werden.
+In einer verteilten Anwendung werden persistente Objekte automatisch übertragen.
+\end{compactitem} 
+
+Die Referenzimplementierung für JPA heißt \highl{EclipseLink} und ist aus dem
+Projekt \emph{TopLink} der Firma Oracle heraus gewachsen.
+%\marginpar{test 1}
+
+\subsubsection{Entity Übersicht}
+\label{lbl:Entity}
+In JPA bezeichnet man ein \highl{persistierbares Objekt} als \emph{Entity}. Das
+bedeutet, der Zustand einer Entity \emph{kann} über die Lebensdauer des
+erzeugenden Prozesses hinaus gespeichert und wiederhergestellt werden. 
+Entities werden nicht automatisch gespeichert sondern befinden sich wie alle
+anderen Objekte im Speicher. Den Zeitpunkt der Speicherung bestimmt die
+Anwendung selbst. Erst über einen API-Aufruf wird eine Entity persistiert.
+
+Neben der einzigartigen \emph{object identity}, besitzt dieses spezielle Objekt
+auch eine \emph{persistent identity}. Dadruch ist es möglich eine bestimmte
+Zeile einer Tabelle zu identifizieren. Es handelt sich bei der \emph{persistent
+identity} also um den Primärschlüssel.
+
+Entities sind \highl{quasi-transaktional}. Obwohl Entitys zu jeder Zeit erzeugt,
+bearbeitet und gelöscht werden können, müssen diese Operationen eigentlich in
+Transaktionen ausgeführt werden. Am Ende einer Transaktion erhält man einen
+eindeutigen Zustand. Entweder hat die Änderung an der Datenbank Erfolg gehabt
+oder ist Fehlgeschlagen. Wird eine Entity im Speicher geändert und nicht direkt
+persistiert, so entsteht in der Zwischenzeit ein undefinierter, inkonsistenter
+Zustand. Dieser kann später im Programm zu einem \emph{Rollback} in der
+Datenbank führen.
+
+Entities sind ganz normale (plain old) Java Objekte (POJOs) mit
+\highl{speziellen Annotationen}. Annotationen beginnen in Java mit einem
+\Code{@} und dienen dazu Metadaten einzubinden. In diesem Fall beschreiben die
+Metadaten die Tabelle einer Datenbank und wie die Klasse darauf abzubilden ist.
+
+\subsubsection{Aufbau}
+\label{lbl:JPAAufbau}
+Damit eine Entity fest in der Datenbank gespeichert wird, muss ein API-Aufruf
+gemacht werden. Für die verschiedenen Operationen auf die Entities sind sogar
+viele verschiedene API-Calls notwendig. Die gesamte API wird von dem
+\emph{EntityManager} implementiert und gekapselt. Er übernimmt die Lese- und
+Schreibvorgänge und sorgt dafür das aus gewöhnlichen Java-Objekten
+persistierbare Einheiten werden. 
+
+Übergibt man dem \emph{EntityManager} eine Referenz auf ein
+persistier\-bares Objekt, so wird dieses zu einer \emph{managed Entity}. Aus
+der Sammlung aller kontrollierten Entities ergibt sich der
+\emph{PersistenceContext}. Dieser Kontext lässt sich nicht direkt, sondern nur
+über den Manager, ändern. Besser ist es, diesen als Zustand zu betrachten. Eine
+Entity kann nur einmal im \emph{PersistenceContext} vorhanden sein, da alle
+Elemente einzigartig sein müssen. Der \emph{EntityManager} selbst, wird aus der
+Fabrik \emph{EntityManagerFactory} erzeugt. Diese belegt den Manager mit
+sinnvollen Voreinstellung und dient somit als Template. Voreinstellungen werden in einer
+separaten \emph{PersistenceUnit} gespeichert und der Fabrik übergeben. Zwischen
+den Klassen besteht deshalb eine 1:1-Beziehung, da die Fabrik nur mit einer
+einzigen Unit konfiguriert werden kann. Betrachtet man Abb.~\ref{fig:JPA}, so
+kommt es sehr überraschend, dass mehrere \emph{EntityManager} auf den gleichen \emph{PersistenceContext} verweisen können.
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\textwidth]{svg/JPA.png}
+		\caption{Beziehungen zwischen den JPA-Konzepten}
+		\label{fig:JPA}
+\end{figure}
+
+\subsubsection{Verwendung}
+\label{lbl:JPAVerwendung}
+Ein \emph{EntityManager} wird sets von der \emph{EntityManagerFactory} geholt.
+Je nach Name der Fabrik erhält der Manager verschiedene
+Konfigurations-Parameter, wie z.B. Verbindungs\-daten und Datenbank-Login.
+\begin{code}
+\begin{minted}{java}
+EntityManagerFactory emf = 
+	Persistence.createEntityManagerFactory("TraceMonitorConfiguration");
+EntityManager em = emf.createEntityManager();
+\end{minted}
+\end{code}
+Nachdem die Fabrik verfügbar ist, kann der Manager geholt werden. Bereits an
+dieser Stelle lassen sich schon \emph{Entities} erstellen und persistieren. Als
+Beispiel soll ein Code-Schnipsel aus dem Trace-Monitor dienen. Er zeigt die
+Speicherung eines Moduls, nachdem das Gerät den Namen und die ID bekannt gegeben hat.
+\begin{code}
+\begin{minted}{java}
+newModule = new Module(); // Entity
+newModule.setModuleId(moduleId);
+newModule.setName(moduleName);
+em.persist(newModule); // write to database
+\end{minted}
+\end{code}
+Die Entity wird von nun an von dem \emph{EntityManager} auf Änderungen
+kontrolliert. Wird beispielsweise nach dem letzten Aufruf erneut eine
+Setter-Methode aufgerufen, werden die neuen Werte automatisch in die Datenbank geschrieben.
+Je nach Einstellung der \emph{EntityManagerFactory} schreibt der
+letzte Aufruf die Daten nicht zwangsläufig sofort in die Datenbank.
+Standardmäßig arbeitet das DBM-System in dem Modus \emph{lazyFetching}.Daten
+werden erst geschrieben, wenn eine Transaktion ansteht oder eine Abfrage auf
+diese Daten von einer anderen Stelle im Code gemacht wird. Die Performance des
+Systems wird verbessert, da nicht jedes Objekt einzeln geschrieben werden muss.
+
+Soll eine Entity nicht mehr vom \emph{EntityManager} verwaltet werden, so lässt
+sich diese entkoppeln. Änderungen werden dann nicht mehr mit der Datenbank
+abgeglichen. Die letzten Änderungen werden nicht synchronisiert.
+\begin{code}
+\begin{minted}{java}
+em.detach(newModule); // stop synchronization with db 
+em.remove(anotherModule); // delete record from db
+\end{minted}
+\end{code}
+Nicht immer kann ein gesetzter Wert auch in die Datenbank gespeichert werden.
+Ist die Modul-ID bereits vergeben wird eine \emph{RollbackException} geworfen,
+da es keine doppelten Primärschlüssel geben darf. Auch kann der Modulname zu
+lang für das Datenbankfeld sein. Damit solche Fehler direkt abgefangen werden
+können und nicht erst bei einer Abfrage woanders im Code, muss eine
+\highl{explizite Transaktion} durchgeführt werden. Dazu muss eine Transaktion
+geöffnet- und mit einem \emph{commit} beendet werden. 
+\begin{code}
+\begin{minted}{java}
+try
+{
+	em.getTransaction().begin();
+		em.persist(newModule)
+	em.getTransaction().commit();
+}
+catch( RollbackException e )
+{
+    LOGGER.log( Level.SEVERE, "Module ID violates primary key constraint or 
+    module name is too long."); 
+}
+\end{minted}
+\end{code}
+Zur Abfrage von Datenbank-Einträgen (\emph{records}) wird ebenfalls der
+\emph{EntityManager} bemächtigt. Der untere Code-Schnipsel aus dem Trace-Monitor
+Programm verhindert, dass ein Modul nicht ein zweites Mal registriert wird.
+Eigentlich sollte das Gerät kein zweites Mal dieses Token senden, aber da es sich um ein
+zustandsloses Protokoll handelt, kann dieser Fall durchaus eintreten. 
+\begin{code}
+\begin{minted}{java}
+// Check if moduleId already exists in database
+Module moduleMatch = null;
+try {
+    moduleMatch = em.createNamedQuery("Module.findByModuleId", Module.class)
+    				.setParameter("moduleId", moduleId)
+    				.getSingleResult();
+} catch (NoResultException e) {
+    LOGGER.log(Level.FINEST, "New ModuleID"); // normal case
+}
+
+if (moduleIdMatch != null) {
+    LOGGER.log(Level.INFO, "ModuleID already exists in database");
+    return;
+}
+\end{minted}
+\end{code}
+Im Code wird eine benannte Query verwendet (später im
+Kap.~\ref{lbl:EntityKlassenErstellen}). Der erwartete Rückgabetyp wird als
+zweiter Parameter angegeben und danach der Platzhalter in der \emph{NamedQuery}
+durch den Wert der Modul-ID ersetzt. Erwartet wird ein einziges Ergebnis. Findet
+die Datenbank mehrere Einträge, wird der erste in der Liste zurückgegeben.
+Falls es zu einer Abfrage keine Einträge gibt, wird eine
+\emph{NoResultException} geworfen. Diese Exception wird allerdings nur geworfen,
+wenn ein einzelner Einträg erwartet wird(\Code{getSingleResult()}). Andernfalls
+wird eine leere Liste zurückgegeben.
+
+
+
+\subsection{Datenbank}
+In \eigen{enSuite} läuft das Java-basierte relationale
+Datenbank-Management-System \highl{Derby}. Das Projekt wurde von der
+\eigen{Apache Software Foundation} entwickelt um leichtgewichtige Datenbanken in
+Java zu unterstützen. Das gesamte System ist komprimiert etwa 600 kB groß und
+hält sich vollständig an SQL92 und SQL99. Im
+Gegensatz zu großen DBM-Systemen braucht Derby keinen Administrator.
+Die Programme sprechen \emph{Derby} über eine standardisierte
+JDBC\footnote{Java Database Connectivity ist eine einheitliche
+Schnittstelle für Datenbanken versch. Hersteller}-Schnittstelle an.
+Unterstützt wird dabei ein \highl{eingebetter JDBC-Modus} und ein Netzwerk-JDBC-Modus.
+\eigen{enSuite} verwendet den eingebetteten Modus bei dem der Datenbankserver
+mit im Prozess der Anwendung läuft. Dies vereinfacht zudem die Auslieferung
+des Programms, da die Bibliothek nur eingebunden werden muss. Im Netzwerk-Modus
+hingegen wird ein eigenständigen Server als Dienst gestartet. Während sich im
+Netzwerk-Modus mehrere Clients zur Datenbank verbinden können, ist die
+eingebette Datenbank ein \highl{Single-User-System}.
+
+\subsubsection{Verbindung zur Datenbank}
+\label{lbl:VebindungZurDatenbank}
+Um eine Verbindung zur Datenbank herzustellen, muss eine Datei namens
+\highl{persistence.xml} im Ordner META-INF des Projekts angelegt werden. 
+In der XML-Datei wird eine \emph{Persistence Unit} definiert, welche die
+Verbindungs\-daten speichert. Eine \emph{Persistence Unit} dient zur
+Konfiguration der \emph{Entity Manager Factory} (Kap.~\ref{lbl:JPAAufbau}).
+Neben der Verbindungs-URL werden hier auch die Login-Daten gespeichert.
+
+
+Die XML-Datei muss nicht per Hand geschrieben werden sondern wird von der IDE
+generiert, indem man eine neue JDBC-Verbindung anlegt. Allerdings lassen sich
+einige Optionen (z.B. In-Memory-Database) nur über direktes Editieren erzielen.
+\begin{listing}[H]
+\begin{xmlcode}
+<?xml version="1.0" encoding="UTF-8"?> 
+<persistence>
+<persistence-unit name="NbNppTraceMonitorPU"> 
+<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <validation-mode>NONE</validation-mode>
+    <properties>
+      <property name="javax.persistence.jdbc.url"
+		value="jdbc:derby:memory:TraceMonitor;create=true"/> 
+      <property name="javax.persistence.jdbc.password" value="geheim"/> 
+      <property name="javax.persistence.jdbc.driver" 
+		value="org.apache.derby.jdbc.EmbeddedDriver"/>
+      <property name="javax.persistence.jdbc.user" value="benutzer"/>
+      <property name="eclipselink.allow-zero-id" value="true"/>
+      <property name="eclipselink.ddl-generation" 
+		value="drop-and-create-tables"/>
+    </properties>
+  </persistence-unit>
+</persistence>
+\end{xmlcode}
+\caption{persistence.xml}
+\label{lst:persistenceXML}
+\end{listing}
+Die \emph{Persistence Unit} heißt in diesem Fall \emph{NbNppTraceMonitorPU}
+(Z.~3) und wurde aus dem Projekt\-namen abgeleitet. Der Name der
+\emph{Persistence Unit} wird im Programm\-code zum Erstellen des \emph{Entity Managers} genutzt: 
+\begin{minted}{java}
+EntityManager em;
+em =javax.persistence.Persistence.
+    createEntityManagerFactory("NbNppTraceMonitorPU").
+    createEntityManager();
+\end{minted}
+Bei jedem Programmstart werden alle Tabellen der Datenbank gelöscht und neu
+angelegt (Z.15), sodass gespeicherte Daten verloren gehen. Über die
+Verbindungs-URL (Z.8) lässt sich das Verhalten des Treibers steuern. Das
+Schlüsselwort \Code{memory:} sagt aus, dass die Datenbank im Speicher gehalten werden soll. Falls noch keine
+Datenbank mit dem Namen "`TraceMonitor"' exisitiert sorgt \Code{create=true}
+dafür, dass diese vorher angelegt wird. 
+
+
+\subsubsection{Tabellen erstellen}
+Nachdem Erstellen des \emph{Entity Managers} ist man bereits automatisch zur
+Datenbank verbunden. Diese ist allerdings noch leer. Es müssen erst noch
+Tabellen erstellt werden.
+
+Tabellen lassen sich 
+\begin{compactitem}
+\item im Java-Programm mittels \emph{Data Definition Language(DDL)} erzeugen
+oder
+\item über die Netbeans-IDE anlegen.
+\end{compactitem}
+Da das Domänen-Modell frei von ralationalen Sprachen wie SQL sein sollte, ist es
+sinn\-voller die Tabellen über die IDE zu erzeugen.
+Nebeans bietet eine grafische Oberfläche oder eine SQL-Konsole an, wobei
+letztere vorgezogen werden sollte. Nur über die Konsole ist es möglich, den
+Primär\-schlüssel automatisch zu inkrementieren (Z.~2) oder einen
+zusammen\-gesetzten Primärschlüssel (\emph{Compound Key}) anzugeben (Z.~14).
+Auch Fremdschlüssel(Z.~12) können so erstellt werden. 
+%\begin{lstlisting}[language=SQL, caption={DDL zur Tabellen-Erzeugung }] 
+\begin{listing}[H]
+\begin{sqlcode}
+CREATE TABLE "FILE" (
+"file_id" INT not null primary key
+        GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1),
+"file_index" INT not null,
+"file_name" VARCHAR(256),
+"log_level" INT
+);
+
+CREATE TABLE "MODULE_FILE"
+(
+"module_id" INT not null references MODULE("module_id"),
+"file_id" INT not null references FILE("file_id"),
+PRIMARY KEY("module_id", "file_id")
+);
+\end{sqlcode}
+\caption{DDL zur Tabellen-Erzeugung}
+\label{lst:DDL}
+\end{listing}
+
+\subsubsection{Entity-Klassen erstellen}
+\label{lbl:EntityKlassenErstellen}
+\highl{Entity-Klassen}, also annotierte Klassen um persistierbare Objekte zu
+erzeugen\footnote{Vgl. Kap.~\ref{lbl:Entity}}, können von Netbeans aus einer
+JDBC-Verbindung heraus \highl{automatisch generiert} werden. Dabei spielt es
+keine Rolle, um was für eine Datenbank es sich handelt. In Netbeans klickt man
+dazu mit der rechten Maustaste auf den Paketnamen und wählt
+\highl{New $\rightarrow $ New Entity Classes from Database}. 
+
+Besteht also schon eine Datenbank, kann der Java-Programmierer sehr schnell
+Entities erzeugen und diese nutzen. Sollte sich doch mal eine Tabelle auf dem
+Datenbank-Server ändern, so können die Entities über die IDE aktualisiert werden.
+Besteht dagegen noch keine Datenbank, kann der Entwickler auch die
+Entity-Klassen selber schreiben und daraus Datenbank-Tabellen erzeugen lassen.
+Je nach persönlicher Präferenz fängt man also mit der Erstellung der Datenbank
+oder Entity-Klassen an. Die meisten Entwickler werden vermutlich erst eine
+Datenbank aufsetzen und daraus die Entitäten erzeugen als umgekehrt, da mehr
+Wissen in diesem Gebiet vorhanden ist.
+
+Aus den fünf Tabellen der \texttt{TraceMonitor}-Datenbank werden insgesamt vier
+Entitäten erstellt. Die Role-Table \texttt{MODULE\_FILE} ist nicht mehr nötig,
+da \emph{n:m-Beziehung} im Domänen-Modell problemlos möglich sind.
+\texttt{EclipseLink}, ebenfalls zuständig für die Generierung der Entity-Klassen, analysiert die
+Beziehungen und nimmt ggf. sinnvolle Rationalisierungen vor.
+
+Anhand der erzeugten Entity \texttt{File} sollen die Annotationen und
+Beziehungen erläutert werden. Das Listing~\ref{lst:fileEntity} wurde dazu auf
+die relevanten Stellen gekürzt. 
+
+
+Jede Entity muss das Interface \texttt{java.io.Serializable} implementieren,
+da die \emph{Java Persistence API} ausschließlich mit diesem Typ arbeitet. Das
+Interface besitzt weder Attribute noch Funktionen. Es gibt an, dass ein
+Objekt serialiserbar ist und hat somit nur eine semantische Bedeutung.
+Um aus \texttt{File} eine Entity zu machen, muss die Klasse zunächst mit
+\Code{@Entity} annotiert werden. Diese Annotation dient EclipseLink primär als
+Marker. 
+Jede Entität benötigt einen einzigartigen Primärschlüssel um die Attribute der
+Tabelle zu identifizieren. Dieser Schlüssel wird in Zeile~23 mit \Code{@Id}
+festgelegt. Gleichzeitig wird durch Zeile~24 dafür gesorgt, dass der Wert
+automatisch hochgezählt wird. Im Programm lässt man einfach den Konstruktor leer
+bzw. ruft die Setter-Methode von fileId nie auf.
+Über die \Code{@column} Annotation wird jedem Attribut eine Spalte in der
+Tabelle zugewiesen. Zur Unterscheidung der Variablen und Spaltennamen
+wandelt Netbeans die Namen leicht ab, sodass aus \texttt{file\_Id} der Name
+\texttt{fileId} wird.
+In den Zeilen~11-20 werden so genannte \emph{NamedQueries} definiert, welche von
+Netbeans automatisch erstellt werden. Dies sind häufig genutzte Abfragen mit
+einem eigenen Alias Namen. Auf die Art lassen sich leicht alle Entities 
+oder welche mit einem bestimmten Attributswert abfragen ohne dafür selbst eine
+Query formulieren zu müssen. \emph{NamedQueries} werden effizienter vom
+Entity\-Manager abgearbeitet als einfache Queries und sollten, wenn möglich,
+verwendet werden. In der Klasse lassen sich beliebig viele \emph{NamedQueries},
+auch über mehrere Tabellen, eintragen. In Zeile~40 wird die Umsetzung der
+\highl{n:m Beziehung} zwischen \texttt{FILE} und \texttt{MODULE}
+veranschaulicht. Eine \emph{Collections}-Klasse wird dazu genutzt die
+Beziehungen zwischen einer Datei und mehreren Modulen zu speichern.
+Die Klasse Module hingegen besitzt eine Collection um alle Dateien zu speichern.
+Somit ist die Verbindung \highl{bidirektional}, da beide Seiten Informationen
+über ihre Beziehung speichern. 
+Wie in Zeile~42 zu sehen ist, funktionieren \highl{1:n Beziehungen} ganz
+ähnlich. Allerdings besitzt nur eine der beiden Klassen eine \emph{Collection}
+und die andere einen \emph{einfachen} Integer-Typ zur Speicherung des Primärschlüssels. 
+In den Zeilen~35-38 wird der Fremdschlüssel annotiert, sodass beim Löschen einer
+Entität dessen Beziehungen berücksichtigt werden. Der EntityManager kann alle
+Kinder einer Eltern-Entität autoamtisch mit löschen. Dazu muss die
+Kaskadierungs-Option, eingeschaltet werden. In Zeile~42 wurde diese Option gesetzt, sodass beim
+Löschen einer Datei auch alle Traces gelöscht werden.
+Grundsätzlich ist die \highl{Kaskadierung beim Löschen} nicht einfach, da
+Kind-Entitäten z.B. Beziehungen zu weiteren Eltern besitzen können. Diese
+sollten nicht einfach gelöscht werden. Im Zweifel sollten Daten manuell
+entfernen werden.
+Bei \highl{n:m Beziehnungen} muss besonders darauf geachtet werden, ob ein
+Löschvorgang kaskadiert werden sollen. Schnell sind bei dem Vorgang gleich
+mehrere Tabellen betroffen und eine Kettenreaktion wird ausgelöst. Da der
+EntityManager bei jeder Transaktion die referentielle Integrität der Datenbank
+überprüft, führt so ein wildes Löschen schnell zu Fehlern.
+\begin{code}
+\begin{javacode}
+package com.elster.nppTraceMonitor.db;
+
+import java.io.Serializable;
+import java.util.Collection;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "FILE")
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "File.findAll", 
+    	query = "SELECT f FROM File f"),
+    @NamedQuery(name = "File.findByFileId", 
+    	query = "SELECT f FROM File f WHERE f.fileId = :fileId"),
+    @NamedQuery(name = "File.findByFileIndex", 
+    	query = "SELECT f FROM File f WHERE f.fileIndex = :fileIndex"),
+    @NamedQuery(name = "File.findByFileName", 
+    	query = "SELECT f FROM File f WHERE f.fileName = :fileName"),
+    @NamedQuery(name = "File.findByLogLevel", 
+    	query = "SELECT f FROM File f WHERE f.logLevel = :logLevel")})
+public class File implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "file_id")
+    private Integer fileId;
+    @Basic(optional = false)
+    @Column(name = "file_index")
+    private int fileIndex;
+    @Column(name = "file_name")
+    private String fileName;
+    @Column(name = "log_level")
+    private Integer logLevel;
+    @JoinTable(name = "MODULE_FILE", joinColumns = {
+        @JoinColumn(name = "file_id", referencedColumnName = "file_id")}, 
+        inverseJoinColumns = {
+        	@JoinColumn(name = "module_id", referencedColumnName = "module_id")})
+    @ManyToMany
+    private Collection<Module> moduleCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fileId")
+    private Collection<Trace> traceCollection;
+
+    public File() {
+    }
+
+	// Weitere Konstruktoren und
+	// Getter & Setter hier ausgelassen
+
+	// hash()-, equals()- und toString()-Funktion ausgelassen
+    
+}
+\end{javacode}
+\caption{Entity Klasse} 
+\label{lst:fileEntity}
+\end{code}
+
+
+\subsection{Kommunikation}
+Der Trace-Monitor ist nun in der Lage Traces zu speichern, aber es fehlt noch
+die Kommunikation mit dem Gerät um überhaupt Nachrichten zu erhalten. In diesem
+Kapitel soll es um das Verwalten der Verbindung und die Realisierung des
+TM-Protokolls gehen.
+
+Zum Öffnen einer TCP-Verbindung wird in Java die Klasse \texttt{java.net.socket}
+verwendet. Da die \emph{read}- und \emph{write}-Methoden blockierend arbeiten,
+werden die Aufrufe in Threads ausgelagert. Es macht Sinn, einen \highl{Reader-
+und einen Writer-Thread} zu benutzen. Dadurch blockiert sich das Lesen- und
+Schreiben vom Socket nicht gegenseitig. 
+% Klassendiagramm
+
+\subsubsection{Verwaltung}
+Der Reader-Thread liest in einer Endlosschleife von dem Socket. Er wartet auf
+genau zwei Bytes. Das erste Byte ist der Token und identifiziert einen Befehl.
+Das zweite Byte ist die Länge der nachfolgenden Daten. Das Hauptprogramm
+registriert sich als \emph{Listener} bei dem Reader-Thread, um über gelesene
+Daten informiert zu werden. Dazu wurde das \emph{Beobachter}-Muster umgesetzt.
+Die Benutzeroberfläche bleibt so reaktionsfähig. Die \Code{processToken}-Methode
+identifiziert das Token und benachrichtigt alle Listener.
+\begin{code}
+\begin{javacode}    
+public void run() {
+	in = new DataInputStream( pSocket.getInputStream() );
+	
+	while( true ) {
+	    buffer = new byte[2];
+	    in.readFully(buffer, 0, 2);
+	
+	    token  = new TMPToken( buffer[0] );
+	    length = (int) buffer[1];
+	    
+	    // read following data
+	    if(length > 0) {
+	        buffer = new byte[length];
+	        in.readFully(buffer, 0, length);
+	        dataField = buffer.clone();
+	    }
+	    else {
+	        dataField = null;
+	    }
+
+	   // Server disconnect
+	    if( token.isFromDevice() && token.isDisconnectCommand() ) {
+	        serverDisconnectedSignal ();
+	        return; // exit thread
+	    }
+	    
+	    processToken( token, dataField );
+	}
+}
+\end{javacode}
+\end{code}
+Der Writer-Thread besitzt eine Warteschlange für Tokens und legt sich schlafen,
+wenn gerade kein Kommando zu senden ist. Die \emph{commandQueue} ist vom Typ \texttt{java.util.LinkedList} und muss
+synchronisiert werden, da sowohl der aktuelle Thread als auch das Hauptprogramm
+gleichzeitig darauf zugreifen. Wenn die Warteschlange leer ist, legt sich der
+Thread schlafen. Aufgeweckt wird der Thread durch ein \Code{notify}-Signal,
+welches durch Füllen der Warteschlange von außen ausgelöst wird.
+Der WriterThread darf sich aber nicht die ganze Zeit "`schlafen legen"', da in
+bestimmten Abständen ein Idle-Signal zum Gerät gesendet werden muss. Bleibt
+dieses Lebenszeichen aus, trennt das Gerät die Verbindung. Um innerhalb der
+Idle-Periode aufzuwachen, wird bei der \Code{Wait()}-Methode ein Timeout als
+Parameter gesetzt.
+\begin{code}
+\begin{javacode} 
+public void run() {
+    while( !Thread.currentThread().isInterrupted() ) {
+            synchronized( commandQueue )  {
+                while ( commandQueue.isEmpty() )  {
+                    commandQueue.wait( TMP.IDLE_PERIOD );
+                    
+                    //Idle-Signal senden
+                    out.write ( TMPToken.PC | TMPToken.IDLE ); 
+                    out.write ( 0x00 ); }
+            }
+            
+            TMCommand command = commandQueue.poll();
+            out.write( command.getCommandId() ); // write command
+            out.write( command.getLength() );
+    }
+}
+\end{javacode}
+\end{code}
+Das Dekodieren der Daten vor dem Versenden und das Enkodieren beim Empfangen ist
+Aufgabe des Trace-Monitor-Protokolls. Da der Aufbau der Felder immer gleich ist
+und sich die Bedeutungen der Bits an einer Position nicht ändern, kann
+man zur Realisierung eine Reihe von Konstanten nutzen. Um aus einer Byte-Folge
+mehrere Werte zu extrahieren, verwendet man \highl{Bitmasken}. Eine bitweise
+Verundung werden die interessanten Bits ausgewählt und mittels Shift-Operation
+an die passende Stelle geschoben.
+\begin{code}
+\begin{minted}{java}
+// Wert extrahieren
+int moduleId = (data & TMP.MODULE_ID_BITMASK) >> TMP.MODULE_ID_SHIFT;
+
+// Wert setzen
+byte data  |= (moduleId << TMP.MODULE_ID_SHIFT) & TMP.MODULE_ID_BITMASK;
+\end{minted}
+\end{code}
+Wie in dem Beispiel zu sehen ist, speicher die Java-Klasse \emph{TMP} die
+Bitmasken und Shift-Längen als statische Konstanten. Weiterhin beinhaltet die
+Klasse die Port-Nummer für die Verbinung, den Versionsnummer des Protokolls und
+die Byte-Order. 
+\subsubsection{Byte-Reihenfolge}
+Das Gerät versendet Daten in der \emph{Little Endian} Byte-Reihen\-folge. Das
+niederwertigste Byte wird also als erstes versendet. Bei der JVM steht
+gewöhnlich das höchstwertige Byte vorne im Speicher, sodass die Reihenfolge
+getauscht werden muss. Es ist sinnvoll die Byte-Reihenfolge direkt nach dem
+Empfang der Nachricht und kurz vor dem Senden einer Nachricht zu setzen. Um die
+Reihenfolge zu ändern, sollte auf die Java Klassen \texttt{java.nio.ByteBuffer}
+und \texttt{java.nio.ByteOrder} aus dem \emph{New I/O Paket} zurückgegriffen
+werden. 
+Ein ByteBuffer-Objekt kann Speicher allozieren und eine Kopie des Arrays
+speichern oder direkt auf dem originalen Array arbeiten. 
+Im letzteren Fall umschließt der ByteBuffer sozusagen
+das Array, wie in dem Beispiel vorgeführt wird. 
+\begin{code}
+\begin{minted}{java}
+ByteBuffer  buffer = ByteBuffer.wrap( timestampArray ); 
+buffer.order( TMP.BYTE_ORDER );
+long utcTime = buffer.getLong(0);
+\end{minted}
+\end{code}
+Als Rückgabewerte werden alle primitiven Datentypen unterstüzt.
+Der Parameter in den Getter-Methoden gibt an, wo das erste Byte
+zu finden ist. Je nach Byte-Reihenfolge wird dieses als niederwertigstes oder höchstwertige Byte
+interpretiert. Der ByteBuffer holt sich die Anzahl an Bytes aus dem Array, wie
+für den Datentyp notwendig ist. Ist das Array zu klein wird eine
+\emph{IndexOutOfBoundsException} geworfen. Zeichen\-ketten (Strings) müssen
+nicht ungewandelt werden, da der Datentyp \texttt{char} genau einem Byte entspricht.
+Verlangt die \texttt{printf}-Funktion einen String kann also auch ein Byte-Array
+als Parameter angegeben werden. Allerdings ist darauf zu achten, den String mit
+dem Nullzeichen \Code{\textbackslash0} zu terminieren.
+
+
+
+\subsection{Anzeige des Datenbankinhalts}
+Die performante Anzeige der Trace-Nachrichten aus der Datenbank ist eine
+wichtige und zugleich schwierige Aufgabe. Wird jede einzelne Nachricht direkt
+in der Oberfläche angezeigt, gibt es zu viel Overhead und das Programm reagiert
+nur noch langsam auf Benutzer\-eingaben. Es muss also ein Lösung gefunden werden
+Einträge gebündelt aus der Datenbank zu holen und anzuzeigen. Das
+fertige Konstrukt soll dabei an\-passungs\-fähig bleiben, sodass Spalten in der
+Tabelle nachträglich umbenannt oder vertauscht werden können. Auch soll der
+Inhalt aus der Datenbank nicht immer unverändert übernommen werden, wie
+beispielsweise der Zeitstempel. Der SQL-Datentyp \texttt{Date} zeigt
+unformatiert nur das Datum an, obwohl nur die Uhrzeit  von Interesse
+ist.
+
+Es gibt noch weitere Herausforderungen: aus der Zeile einer Tabelle muss
+sich die Entität zurück\-erhalten lassen. Diese Konvertierung muss immer dann
+vorgenommen werden, wenn Benutzer Eingaben tätigen. Zum Ändern des Trace-Levels
+etwa wird die File-ID benötigt, welche aber nur in der Entität und nicht in der
+Tabellen\-zeile steht. 
+
+Betrachtet man noch einmal welche Werte überhaupt in der Trace-Tabelle angezeigt
+werden sollen (Tab.~\ref{lbl:TraceTable}), so stellt man fest, dass sich diese
+aus einem Verbund von mehreren Datenbank-Tabellen (JOIN) zusammen\-setzt.
+Anstatt eine Datenbank-Tabelle eins zu eins auf eine Swing-Tabelle zu mappen,
+muss also ein JOIN abgebildet werden.
+
+Das Eintragen in der Datenbank soll nicht von Hand programmiert werden, da dies
+nicht ohne Einbau einer rationalen Sprache wie SQL im Objekt\-modell
+funktioniert. Das Ändern oder Tauschen von Spalten ist so auch immer mit
+Änderungen im Code verbunden, also unflexibel. Für das automatische Anzeigen von
+Werten in einer Swing-Tabelle auf Basis einer Datenquelle kann
+\emph{BeansBinding} verwendet werden. 
+
+\subsubsection{Einführung in BeansBinding}
+\emph{BeansBinding} wurde entwickelt um die Eigenschaften von zwei Objekt
+synchron zu halten. Dabei lässt sich auswählen, welche Eigenschaften
+synchronisiert werden sollen und in welcher Richtung dies geschieht.
+Standardmäßig wird bidirektional synchronisiert.
+
+Die Swing-Table benötigt noch eine Datenquelle zur Synchronisation. Für eine
+Swing-Tabelle kommen nicht beliebige Objekte in Frage. In der Praxis wird häufig
+eine observierbare Liste herangezogen, welche entsprechende Eigenschaften
+besitzt.
+Deshalb müssen alle Einträge einer Datenbank-Tabelle zunächst in einer Liste
+gespeichert werden. Da alle Traces in der Tabelle \texttt{MODULE\_TRACE}
+gespeichert werden, wird die Entität ModuleTrace nach allen Einträgen befragt.
+Zeilen 1-2 in dem Beispiel unten zeigen diese Abfrage. 
+
+Die Liste \Code{moduleTraceList} kann nun als Datenquelle für die Swing-Tabelle
+verwendet werden (Z.~5). Danach wird den Spalten der Reihe nach eine Eigenschaft
+(engl. Property) zugewiesen. Der Ausdruck \Code{\&\{timestamp\}} bezieht sich
+auf die Eigenschaft in der ModuleTrace-Entität. Die Datenbank-Abfrage in Zeile~2
+hat ja eine Liste von ModuleTrace-Entitäten zurückgegeben auf welche sich nun diese Ausdrücke beziehen. 
+
+Um nun Daten aus anderen Datenbank-Tabellen mit in die Swing-Tabelle aufzunehmen
+(JOIN), kann man wiederum die Ausdrücke benutzen. So wurde in Z.~18 der
+Dateiname aus der \texttt{FILE}-Tabelle mit in die Swing-Tabelle eingebaut.
+Dazu werden Properties einfach verknüpft. Im Programm ist dies ja auch ohne
+weiteres möglich:
+\begin{minted}{java}
+ModuleTrace moduleTrace = em.
+      createNamedQuery("ModuleTrace.findByModuleTraceId",Module.class).
+      setParameter("moduleId", 1).
+      getSingleResult();
+File f = moduleTrace.getTraceId().getFileId();
+\end{minted}
+Ausdrücke sind abstrakter und dienen ganz allgemein zur Beschreibung von
+Eigenschaften beliebiger Klassen.
+
+\begin{code}
+\begin{javacode}
+moduleTraceQuery = em.createQuery("SELECT m FROM ModuleTrace m");
+moduleTraceList  =
+ObservableCollections.observableList(moduleTraceQuery.getResultList());
+                   
+jTableBinding = SwingBindings.createJTableBinding(
+        UpdateStrategy.READ, moduleTraceList, traceTbl);
+columnBinding = jTableBinding.addColumnBinding(
+        org.jdesktop.beansbinding.ELProperty.create("${timestamp}"));
+columnBinding.setColumnName("Timestamp");
+columnBinding.setColumnClass(java.util.Date.class);
+columnBinding.setEditable(false);
+columnBinding = jTableBinding.addColumnBinding(
+        org.jdesktop.beansbinding.ELProperty.create("${moduleId.moduleId}"));
+columnBinding.setColumnName("Module Id");
+columnBinding.setColumnClass(Integer.class);
+columnBinding.setEditable(false);
+columnBinding = jTableBinding.addColumnBinding(
+        org.jdesktop.beansbinding.ELProperty.create("${traceId.fileId.fileName}"));
+columnBinding.setColumnName("File");
+columnBinding.setColumnClass(String.class);
+columnBinding.setEditable(false);
+// usw. für die restlichen Spalten
+\end{javacode}
+\end{code}
+
+\subsubsection{Konvertierung von Tabellen\-zeilen }
+Im vorherigen Kapitel wurde beschrieben, wie Entities automatisch auf eine
+Swing-Tabelle gemapped werden. Der Weg von einer Zeile zurück zur Entität fehlt
+noch. In der Trace-Monitor GUI (Abb.~\ref{fig:TraceMonitor}), sieht man
+insgesamt drei Tabellen. Aus der File-Tabelle (unten links) muss die File-ID
+extrahiert werden können, um den Trace-Level zu ändern. Aus der Trace-Tabelle
+(rechts) muss bei einem Doppelklick der Dateiname und die Zeilnenummer
+extrahiert werden können, um die Datei in einem externen Editor zu öffnen. Statt
+einfach den Wert in der Spalte zu nehmen, wird auf die Datenquelle selbst
+zugegriffen. Im Falle der File-Tabelle wäre das auch garnicht möglich, da die ID
+garnicht angezeigt wird. 
+
+Swing-Tabellen basieren auf dem \emph{Model View Controller}-Prinzip, bei dem
+die Daten von der Darstellung entkoppelt werden. Zum Controller \texttt{JTable}
+gehört die Modell-Klasse \texttt{TableModel}. Anzeige und Speicherung der Daten
+wird so getrennt. 
+
+
+Zur Konvertierung von Zeilen zurück zum Modell kann die Methode
+\Code{convertRowIndexToModel} aus der Klasse \texttt{JTable} verwendet werden.
+
+
+
+\begin{javacode}
+int[] selectedRows = fileTbl.getSelectedRows ();
+for(int i : selectedRows ) {
+    fileModel = fileList.get( fileTbl.convertRowIndexToModel( i ) );
+	
+	// Frage über File-ID die Module-ID ab 
+	// Sende neuen Trace-Level zum Gerät
+}
+\end{javacode}
+
+\subsubsection{Formatierung von Zellen in der Tabelle}
+Der Datentyp \texttt{java.sql.Date} zeigt in der Standard-Formatierung nur das
+Datum ohne Uhrzeit an. Um diesen Wert vor der Anzeige in der GUI anzupassen,
+muss ein \emph{Renderer} für die Zellen der Tabelle geschrieben werden. In dem
+unteren Beispiel wird die Uhrzeit mit drei Nachkomma\-stellen im
+Sekunden\-bereich angezeigt. Der \emph{TableCellRenderer} soll
+nicht für alle Zellen, sondern nur für Zellen mit dem Datentyp \texttt{Date}
+gelten soll. Um dies zu bewirken, muss bei der Installation des Renderers der
+Spaltentyp als erster Parameter übergeben werden. Jede Spalte in einer
+\texttt{Swing-JTable} \emph{kann} auf einem bestimmten Datentyp spezialisiert
+werden. Tut man dies nicht, gilt autoamtisch der Typ \texttt{Object}.
+\begin{code}
+\begin{javacode}
+traceTbl.setDefaultRenderer(Date.class, new MyTableCellRenderer());
+
+public class MyTableCellRenderer extends DefaultTableCellRenderer {
+    private SimpleDateFormat df = new SimpleDateFormat( "HH:mm:ss.SSS" );
+    
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value,
+            boolean isSelected, boolean hasFocus, int row, int column) {
+        if(value instanceof Date)
+        {
+            df.setTimeZone ( TimeZone.getTimeZone ( "GMT+0:00")); // London
+            value = df.format(value);
+        }
+        return super.getTableCellRendererComponent(table, value, 
+			isSelected, hasFocus, row, column);
+    }
+}
+\end{javacode}
+\caption{Renderer für die Zellen einer Swing-Tabelle}
+\end{code}
+Um die Nachricht zusammen zu bauen, muss der Trace-Monitor die Parameter in
+den Formatierungsstring einsetzen. Für diese Aufgabe gibt es in Java die
+Klasse \texttt{java.util.Formatter}, welche stark an die C-Funktion \texttt{printf} angelehnt ist. Obwohl die
+Implementierung nicht ganz vollständig ist, reicht die \texttt{format}-Funktion für die meisten Anwendungsfälle in der Praxis aus. 
+Anstatt den fertigen String auf die Standard\-ausgabe zu drucken, wird dieser
+als Parameter zurückgegeben. Die Signatur der Methode sieht so aus:
+\begin{minted}{java}
+String java.util.String.format (String formatString, Object[] args);
+\end{minted}
+Bei der Anzeige von fertigen Traces traten vereinzelt Konvertierungsfehler auf,
+welche auf den Platzhalter \Code{\%lld} zurückzuführen waren. Dieser steht für den Datentyp \texttt{long long} und
+muss in Java wie ein Integer behandelt werden. In allen Formatierungsstrings
+wird dieser Platzhalter deshalb durch ein einfaches \Code{\%d} ersetzt.
+
+
+
+
+
+
+
+\section{Anhang}
+\subsection{Abgrenzung Logging und Tracing}
+Mit Logging wird allgemein eine Form der Ausgabe von Informationen eines Programms zur 
+seiner Laufzeit bezeichnet. Im Gegensatz zu einer einfachen Ausgabe in einer Konsole 
+oder auf einem Terminal werden Logs im Allgemeinen länger gespeichert, z.B. als Dateien. 
+Die enthaltenen Informationen sind oft in einem standardisierten Format, welches z.B. 
+einen Zeitstempel enthält. Es ist üblich, dass sich die Art bzw. die Menge an Informationen 
+die geloggt werden soll einstellen lässt. So können beispielsweise nur Fehler aufgezeichnet 
+werden, während Warnungen nicht ausgegeben werden.
+
+Bei dem Begriff des Tracing liegt der Schwerpunkt auf der Verfolgung des Ablaufs eines Programms. 
+Es soll nachvollziehbar sein, wann welche Funktion mit welchen Eingangsdaten zu welchem Ergebnis 
+geführt hat. Es gibt hierbei zwei verschieden Ansätze. Zum einen kann das Programm zur Laufzeit 
+durch einen bestimmen Prozess überwacht  und manipuliert werden. Dabei können neben Systemaufrufen 
+vom Benutzer definierte Trace-Points gesetzt werden. Zum anderen kann das Programm mit zusätzlichen 
+Funktionen übersetzt werden, welche die entsprechenden Informationen von sich aus erzeugen.
+Anstatt die Ausgabe des Logging-Dienstes in einer Datei auf der lokalen Festplatte zu schreiben, 
+können Nachrichten auch parallel über das Netzwerk oder zu einer anderen Schnittstelle gesendet werden.
+
+Wie man erkennt, haben Logging und Tracing etliche Überschneidungen. Es müssen jeweils Informationen 
+zur Laufzeit erstellt werden, welche nicht zu der eigentlichen Funktionalität des Programms gehören. 
+Beide benötigen einen Zeitstempel, auch wenn für Traces eine höhere Genauigkeit erforderlich ist. 
+Die generierten Informationen sollen speicherbar sein um sie später auswerten zu können. Wird das 
+Tracing in das Programm integriert und nicht von außen erzeugt, besteht somit kaum noch ein Unterschied 
+zum Logging. Auf Grund dieser Gemeinsamkeiten wird im folgenden Logging und Tracing gleichgesetzt.
+Durch die Trace-Nachrichten soll es möglich sein eine genaue Übersicht über den Ablauf des Programms zu 
+erhalten. Alle Trace-Messages zusammen ergeben den äußeren Zustand des Geräts. Der Programmierer muss 
+dieses Konzept aber auch konsequent nutzen, sodass ausreichend Informationen zur Verfügung stehen. 
+
+\subsection{Tracing}
+Oberstes Ziel ist es den äußeren Zustand des Geräts durch die Menge aller Trace-Nachrichten 
+abzubilden. Je konsequenter die Entwickler das Tracing-Konzept umsetzen, desto genauer ist auch 
+dieser Zustand. Im Wesentlichen geht es beim Tracing um das Nachvollziehen des Programmablaufs. 
+Jede Nachricht wird dazu mit einem Zeitstempel versehen und muss natürlich auch in der richtigen 
+Reihenfolge vom Monitor angezeigt werden. Der Trace-Monitor wird so zur Überwachungsschnittstelle 
+für die Entwickler. Man möchte gerne erfahren zu welchen Ergebnis ein Aufruf mit gegebenen Parametern 
+geführt hat. Tracing ist eng verwandt mit dem Logging, reicht jedoch 
+etwas weiter. Logging dient in erster Linie dem Administrator dazu Dienste zu überwachen. Dabei werden 
+auf Anwendungsebene Statusmeldungen festgehalten. Beim Tracing wird auf unterster Ebene geloggt, beispielsweise 
+Exceptions innerhalb von Funktionen. In der Regel ist das Datenaufkommen beim Tracing viel höher als beim Logging 
+und kann sogar dazu führen, dass die Performance des Geräts massiv beeinträchtigt wird.
+
+\newpage
+\subsection{Trace-Monitor im Einsatz}
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\textwidth]{svg/tm.jpg}
+		\label{fig:TraceMonitor}
+\end{figure}
+
+\newpage
+\bibliography{referenzen}
+\bibliographystyle{alpha}
+
+\end{document}
