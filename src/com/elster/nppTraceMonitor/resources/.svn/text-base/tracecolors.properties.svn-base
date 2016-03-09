@@ -1,0 +1,9 @@
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+crit=-36482
+debug=-3342388
+err=-26368
+notice=-10040320
+info=-720962
+warn=-14336
+emerg=-36482

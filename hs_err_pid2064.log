@@ -1,0 +1,1001 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (thread.cpp:1371), pid=2064, tid=2456
+#  guarantee(cur_sp > stack_yellow_zone_base()) failed: not enough space to reguard - increase StackShadowPages
+#
+# JRE version: 6.0_31-b05
+# Java VM: Java HotSpot(TM) Client VM (20.6-b01 mixed mode windows-x86 )
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x03352c00):  JavaThread "readerThread" [_thread_in_vm, id=2456, stack(0x0c380000,0x0c3d0000)]
+
+Stack: [0x0c380000,0x0c3d0000],  sp=0x0c382f00,  free space=11k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x1335ca]
+V  [jvm.dll+0x12e4dc]
+V  [jvm.dll+0x116ab6]
+V  [jvm.dll+0x116ae0]
+V  [jvm.dll+0x18c3a1]
+V  [jvm.dll+0xfacbd]
+V  [jvm.dll+0x95776]
+V  [jvm.dll+0x9d5b3]
+C  [profilerinterface.dll+0x3afa]  Agent_OnLoad+0xd3a
+V  [jvm.dll+0xff5a9]
+V  [jvm.dll+0x112f5c]
+V  [jvm.dll+0x1134eb]
+V  [jvm.dll+0x81237]
+V  [jvm.dll+0x13aefd]
+V  [jvm.dll+0x57736]
+V  [jvm.dll+0x5e33e]
+V  [jvm.dll+0x6c929]
+V  [jvm.dll+0x7ea75]
+V  [jvm.dll+0x7ec00]
+V  [jvm.dll+0x12edae]
+V  [jvm.dll+0xfabe4]
+V  [jvm.dll+0x18c3a1]
+V  [jvm.dll+0xfacbd]
+V  [jvm.dll+0x95776]
+V  [jvm.dll+0x9d5b3]
+C  [profilerinterface.dll+0x3afa]  Agent_OnLoad+0xd3a
+V  [jvm.dll+0xff5a9]
+V  [jvm.dll+0x112f5c]
+V  [jvm.dll+0x1134eb]
+V  [jvm.dll+0x81237]
+V  [jvm.dll+0x13aefd]
+V  [jvm.dll+0x57736]
+V  [jvm.dll+0x5e33e]
+V  [jvm.dll+0x6c929]
+V  [jvm.dll+0x7ea75]
+V  [jvm.dll+0x7ec00]
+V  [jvm.dll+0x12edae]
+V  [jvm.dll+0xfabe4]
+V  [jvm.dll+0x18c3a1]
+V  [jvm.dll+0xfacbd]
+V  [jvm.dll+0x95776]
+V  [jvm.dll+0x9d5b3]
+C  [profilerinterface.dll+0x3afa]  Agent_OnLoad+0xd3a
+V  [jvm.dll+0xff5a9]
+V  [jvm.dll+0x112f5c]
+V  [jvm.dll+0x1134eb]
+V  [jvm.dll+0x81237]
+V  [jvm.dll+0x13aefd]
+V  [jvm.dll+0x57736]
+V  [jvm.dll+0x5e33e]
+V  [jvm.dll+0x6c929]
+V  [jvm.dll+0x7ea75]
+V  [jvm.dll+0x7ec00]
+V  [jvm.dll+0x12edae]
+V  [jvm.dll+0xfabe4]
+V  [jvm.dll+0x18c3a1]
+V  [jvm.dll+0xfacbd]
+V  [jvm.dll+0x95776]
+V  [jvm.dll+0x9d5b3]
+C  [profilerinterface.dll+0x3afa]  Agent_OnLoad+0xd3a
+V  [jvm.dll+0xff5a9]
+V  [jvm.dll+0x112f5c]
+V  [jvm.dll+0x1134eb]
+V  [jvm.dll+0x81237]
+V  [jvm.dll+0x13aefd]
+V  [jvm.dll+0x57736]
+V  [jvm.dll+0x5e33e]
+V  [jvm.dll+0x6c929]
+V  [jvm.dll+0x7ea75]
+V  [jvm.dll+0x7ec00]
+V  [jvm.dll+0x12edae]
+V  [jvm.dll+0xfabe4]
+V  [jvm.dll+0x18c3a1]
+V  [jvm.dll+0xfacbd]
+V  [jvm.dll+0x95776]
+V  [jvm.dll+0x9d5b3]
+C  [profilerinterface.dll+0x3afa]  Agent_OnLoad+0xd3a
+V  [jvm.dll+0xff5a9]
+V  [jvm.dll+0x112f5c]
+V  [jvm.dll+0x1134eb]
+V  [jvm.dll+0x81237]
+V  [jvm.dll+0x13aefd]
+V  [jvm.dll+0x57736]
+V  [jvm.dll+0x5e33e]
+V  [jvm.dll+0x6c929]
+V  [jvm.dll+0x7ea75]
+V  [jvm.dll+0x7ec00]
+V  [jvm.dll+0x12edae]
+V  [jvm.dll+0xfabe4]
+V  [jvm.dll+0x18c3a1]
+V  [jvm.dll+0xfacbd]
+V  [jvm.dll+0x95776]
+V  [jvm.dll+0x9d5b3]
+C  [profilerinterface.dll+0x3afa]  Agent_OnLoad+0xd3a
+V  [jvm.dll+0xff5a9]
+V  [jvm.dll+0x112f5c]
+V  [jvm.dll+0x1134eb]
+V  [jvm.dll+0x81237]
+V  [jvm.dll+0x13aefd]
+V  [jvm.dll+0x57736]
+...<more frames>...
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+v  ~RuntimeStub::StackOverflowError throw_exception
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+1
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+j  org.netbeans.lib.profiler.server.ThreadInfo.newThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+19
+j  org.netbeans.lib.profiler.server.ThreadInfo.getThreadInfo(Ljava/lang/Thread;)Lorg/netbeans/lib/profiler/server/ThreadInfo;+10
+j  org.netbeans.lib.profiler.server.ProfilerRuntime.monitorEntry(Ljava/lang/Thread;Ljava/lang/Object;)V+19
+v  ~StubRoutines::call_stub
+v  ~RuntimeStub::new_type_array Runtime1 stub
+J  java.io.ObjectOutputStream$BlockDataOutputStream.<init>(Ljava/io/OutputStream;)V
+J  java.io.ObjectOutputStream.<init>(Ljava/io/OutputStream;)V
+J  org.eclipse.persistence.mappings.converters.SerializedObjectConverter.convertObjectValueToDataValue(Ljava/lang/Object;Lorg/eclipse/persistence/sessions/Session;)Ljava/lang/Object;
+J  org.eclipse.persistence.mappings.foundation.AbstractDirectMapping.getFieldValue(Ljava/lang/Object;Lorg/eclipse/persistence/internal/sessions/AbstractSession;)Ljava/lang/Object;
+J  org.eclipse.persistence.mappings.foundation.AbstractDirectMapping.compareObjectValues(Ljava/lang/Object;Ljava/lang/Object;Lorg/eclipse/persistence/internal/sessions/AbstractSession;)Z
+J  org.eclipse.persistence.mappings.foundation.AbstractDirectMapping.compareForChange(Ljava/lang/Object;Ljava/lang/Object;Lorg/eclipse/persistence/internal/sessions/ObjectChangeSet;Lorg/eclipse/persistence/internal/sessions/AbstractSession;)Lorg/eclipse/persistence/internal/sessions/ChangeRecord;
+J  org.eclipse.persistence.descriptors.changetracking.DeferredChangeDetectionPolicy.createObjectChangeSetThroughComparison(Ljava/lang/Object;Ljava/lang/Object;Lorg/eclipse/persistence/internal/sessions/UnitOfWorkChangeSet;ZLorg/eclipse/persistence/internal/sessions/AbstractSession;Lorg/eclipse/persistence/descriptors/ClassDescriptor;)Lorg/eclipse/persistence/internal/sessions/ObjectChangeSet;
+J  org.eclipse.persistence.descriptors.changetracking.DeferredChangeDetectionPolicy.calculateChanges(Ljava/lang/Object;Ljava/lang/Object;ZLorg/eclipse/persistence/internal/sessions/UnitOfWorkChangeSet;Lorg/eclipse/persistence/internal/sessions/UnitOfWorkImpl;Lorg/eclipse/persistence/descriptors/ClassDescriptor;Z)Lorg/eclipse/persistence/internal/sessions/ObjectChangeSet;
+J  org.eclipse.persistence.internal.sessions.UnitOfWorkImpl.calculateChanges(Ljava/util/Map;Lorg/eclipse/persistence/internal/sessions/UnitOfWorkChangeSet;Z)Lorg/eclipse/persistence/internal/sessions/UnitOfWorkChangeSet;
+j  org.eclipse.persistence.internal.sessions.UnitOfWorkImpl.commitToDatabaseWithChangeSet(Z)V+92
+j  org.eclipse.persistence.internal.sessions.RepeatableWriteUnitOfWork.commitRootUnitOfWork()V+2
+j  org.eclipse.persistence.internal.sessions.UnitOfWorkImpl.commitAndResume()V+102
+j  org.eclipse.persistence.internal.jpa.transaction.EntityTransactionImpl.commitInternal()V+69
+j  org.eclipse.persistence.internal.jpa.transaction.EntityTransactionImpl.commit()V+1
+j  com.elster.nppTraceMonitor.TraceMonitorFrame.saveTraceData(Lcom/elster/nppTraceMonitor/db/Module;)V+307
+j  com.elster.nppTraceMonitor.TraceMonitorFrame.moduleSlot([B)V+402
+j  com.elster.nppTraceMonitor.net.ConnectionReader.moduleReceivedSignal([B)V+31
+j  com.elster.nppTraceMonitor.net.ConnectionReader.processToken(Lcom/elster/nppTraceMonitor/net/TMPToken;[B)V+60
+j  com.elster.nppTraceMonitor.net.ConnectionReader.run()V+206
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x034b0800 JavaThread "writerThread" [_thread_blocked, id=2312, stack(0x0c3d0000,0x0c420000)]
+=>0x03352c00 JavaThread "readerThread" [_thread_in_vm, id=2456, stack(0x0c380000,0x0c3d0000)]
+  0x038bc000 JavaThread "TimerQueue" daemon [_thread_blocked, id=3812, stack(0x0c2e0000,0x0c330000)]
+  0x037d7400 JavaThread "D3D Screen Updater" daemon [_thread_blocked, id=3156, stack(0x04290000,0x042e0000)]
+  0x03820000 JavaThread "Image Fetcher 3" daemon [_thread_blocked, id=2240, stack(0x04240000,0x04290000)]
+  0x0383a000 JavaThread "Image Fetcher 0" daemon [_thread_blocked, id=2472, stack(0x04150000,0x041a0000)]
+  0x037c8c00 JavaThread "derby.rawStoreDaemon" daemon [_thread_blocked, id=1480, stack(0x04100000,0x04150000)]
+  0x03776400 JavaThread "Timer-0" daemon [_thread_blocked, id=2216, stack(0x040b0000,0x04100000)]
+  0x02f3d800 JavaThread "derby.antiGC" daemon [_thread_blocked, id=132, stack(0x04060000,0x040b0000)]
+  0x002b7400 JavaThread "DestroyJavaVM" [_thread_blocked, id=3996, stack(0x008c0000,0x00910000)]
+  0x02ee4400 JavaThread "AWT-EventQueue-0" [_thread_blocked, id=2372, stack(0x032c0000,0x03310000)]
+  0x02e5a400 JavaThread "AWT-Windows" daemon [_thread_blocked, id=764, stack(0x03270000,0x032c0000)]
+  0x02ebe800 JavaThread "AWT-Shutdown" [_thread_blocked, id=2552, stack(0x03220000,0x03270000)]
+  0x02ebd800 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=2232, stack(0x031d0000,0x03220000)]
+  0x02e0e800 JavaThread "Low Memory Detector" daemon [_thread_blocked, id=2420, stack(0x030b0000,0x03100000)]
+  0x02e0c800 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=2324, stack(0x03060000,0x030b0000)]
+  0x02df3400 JavaThread "*** Profiler Agent Special Execution Thread 6" daemon [_thread_blocked, id=2516, stack(0x03010000,0x03060000)]
+  0x02dfb800 JavaThread "*** JFluid Monitor thread ***" daemon [_thread_blocked, id=4052, stack(0x02fc0000,0x03010000)]
+  0x02bc3c00 JavaThread "*** Profiler Agent Communication Thread" daemon [_thread_in_native, id=2228, stack(0x02f70000,0x02fc0000)]
+  0x02b70400 JavaThread "Attach Listener" daemon [_thread_blocked, id=3688, stack(0x02d20000,0x02d70000)]
+  0x02b6ec00 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=2624, stack(0x02cd0000,0x02d20000)]
+  0x02b68800 JavaThread "Finalizer" daemon [_thread_blocked, id=3956, stack(0x02c80000,0x02cd0000)]
+  0x02b58800 JavaThread "Reference Handler" daemon [_thread_blocked, id=3808, stack(0x02c30000,0x02c80000)]
+
+Other Threads:
+  0x02b52800 VMThread [stack: 0x02be0000,0x02c30000] [id=2296]
+  0x02e21c00 WatcherThread [stack: 0x03100000,0x03150000] [id=596]
+
+VM state:synchronizing (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x002b62e8] Threads_lock - owner thread: 0x02b52800
+[0x002b66f8] Heap_lock - owner thread: 0x02dfb800
+
+Heap
+ def new generation   total 12480K, used 11483K [0x10010000, 0x10d90000, 0x15560000)
+  eden space 11136K, 100% used [0x10010000, 0x10af0000, 0x10af0000)
+  from space 1344K,  25% used [0x10c40000, 0x10c96c70, 0x10d90000)
+  to   space 1344K,   0% used [0x10af0000, 0x10af0000, 0x10c40000)
+ tenured generation   total 27560K, used 18942K [0x15560000, 0x1704a000, 0x20010000)
+   the space 27560K,  68% used [0x15560000, 0x167dfba8, 0x167dfc00, 0x1704a000)
+ compacting perm gen  total 29696K, used 29526K [0x20010000, 0x21d10000, 0x24010000)
+   the space 29696K,  99% used [0x20010000, 0x21ce5908, 0x21ce5a00, 0x21d10000)
+No shared spaces configured.
+
+Code Cache  [0x00920000, 0x00d88000, 0x02920000)
+ total_blobs=2608 nmethods=2301 adapters=239 free_code_cache=28948928 largest_free_block=256
+
+Dynamic libraries:
+0x00400000 - 0x00425000 	C:\Program Files\Java\jdk1.6.0_31\bin\java.exe
+0x7c900000 - 0x7c9af000 	C:\WINDOWS\system32\ntdll.dll
+0x7c800000 - 0x7c8f6000 	C:\WINDOWS\system32\kernel32.dll
+0x77dd0000 - 0x77e6b000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x77e70000 - 0x77f02000 	C:\WINDOWS\system32\RPCRT4.dll
+0x77fe0000 - 0x77ff1000 	C:\WINDOWS\system32\Secur32.dll
+0x7c340000 - 0x7c396000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\msvcr71.dll
+0x6d8c0000 - 0x6db6f000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\client\jvm.dll
+0x7e410000 - 0x7e4a1000 	C:\WINDOWS\system32\USER32.dll
+0x77f10000 - 0x77f59000 	C:\WINDOWS\system32\GDI32.dll
+0x76b40000 - 0x76b6d000 	C:\WINDOWS\system32\WINMM.dll
+0x6d870000 - 0x6d87c000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\verify.dll
+0x6d3d0000 - 0x6d3ef000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\java.dll
+0x10000000 - 0x1000a000 	C:\Program Files\NetBeans 7.1.2\profiler\lib\deployed\jdk16\windows\profilerinterface.dll
+0x77c10000 - 0x77c68000 	C:\WINDOWS\system32\MSVCRT.dll
+0x6d8b0000 - 0x6d8bf000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\zip.dll
+0x6d6b0000 - 0x6d6c3000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\net.dll
+0x71ab0000 - 0x71ac7000 	C:\WINDOWS\system32\WS2_32.dll
+0x71aa0000 - 0x71aa8000 	C:\WINDOWS\system32\WS2HELP.dll
+0x71a50000 - 0x71a8f000 	C:\WINDOWS\system32\mswsock.dll
+0x662b0000 - 0x66308000 	C:\WINDOWS\system32\hnetcfg.dll
+0x71a90000 - 0x71a98000 	C:\WINDOWS\System32\wshtcpip.dll
+0x6d600000 - 0x6d609000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\management.dll
+0x6d0b0000 - 0x6d1fc000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\awt.dll
+0x73000000 - 0x73026000 	C:\WINDOWS\system32\WINSPOOL.DRV
+0x76390000 - 0x763ad000 	C:\WINDOWS\system32\IMM32.dll
+0x774e0000 - 0x7761d000 	C:\WINDOWS\system32\ole32.dll
+0x773d0000 - 0x774d3000 	C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.5512_x-ww_35d4ce83\COMCTL32.dll
+0x77f60000 - 0x77fd6000 	C:\WINDOWS\system32\SHLWAPI.dll
+0x5ad70000 - 0x5ada8000 	C:\WINDOWS\system32\uxtheme.dll
+0x7c9c0000 - 0x7d1d7000 	C:\WINDOWS\system32\shell32.dll
+0x6d2e0000 - 0x6d32f000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\fontmanager.dll
+0x4fdd0000 - 0x4ff76000 	C:\WINDOWS\system32\d3d9.dll
+0x03310000 - 0x03316000 	C:\WINDOWS\system32\d3d8thk.dll
+0x77c00000 - 0x77c08000 	C:\WINDOWS\system32\VERSION.dll
+0x76f20000 - 0x76f47000 	C:\WINDOWS\system32\DNSAPI.dll
+0x76fb0000 - 0x76fb8000 	C:\WINDOWS\System32\winrnr.dll
+0x76f60000 - 0x76f8c000 	C:\WINDOWS\system32\WLDAP32.dll
+0x76fc0000 - 0x76fc6000 	C:\WINDOWS\system32\rasadhlp.dll
+0x6d6d0000 - 0x6d6d9000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\nio.dll
+0x6d250000 - 0x6d273000 	C:\Program Files\Java\jdk1.6.0_31\jre\bin\dcpr.dll
+0x76bf0000 - 0x76bfb000 	C:\WINDOWS\system32\PSAPI.DLL
+
+VM Arguments:
+jvm_args: -agentpath:C:/Program Files/NetBeans 7.1.2/profiler/lib/deployed/jdk16/windows/profilerinterface.dll=C:\Program Files\NetBeans 7.1.2\profiler\lib,5140,10 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=C:\Documents and Settings\lu1721\My Documents\NetBeansProjects\NbNppTraceMonitor\nbproject\private\profiler 
+java_command: com.elster.nppTraceMonitor.TraceMonitorFrame
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\Program Files\Java\jdk1.6.0_31\bin;C:\Python32;C:\Python32\Lib\site-packages\PyQt4;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\TortoiseSVN\bin;C:\MinGW\bin;C:\Program Files\SlikSvn\bin;C:\Program Files\Aspell\bin
+USERNAME=lu1721
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 23 Stepping 10, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows XP Build 2600 Service Pack 3
+
+CPU:total 1 (2 cores per cpu, 1 threads per core) family 6 model 23 stepping 10, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1
+
+Memory: 4k page, physical 1048048k(251424k free), swap 2519628k(1869988k free)
+
+vm_info: Java HotSpot(TM) Client VM (20.6-b01) for windows-x86 JRE (1.6.0_31-b05), built on Feb  3 2012 18:44:09 by "java_re" with MS VC++ 7.1 (VS2003)
+
+time: Mon Jun 11 13:05:22 2012
+elapsed time: 13 seconds
+

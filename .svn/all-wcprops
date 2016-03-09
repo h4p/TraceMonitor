@@ -1,0 +1,27 @@
+K 26
+svn:wc:ra_dav:activity-url
+V 32
+/svn/NbNppTraceMonitor/!svn/act/
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/NbNppTraceMonitor/!svn/ver/3/trunk/NbNppTraceMonitor
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/NbNppTraceMonitor/!svn/ver/3/trunk/NbNppTraceMonitor/build.xml
+END
+manifest.mf
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/NbNppTraceMonitor/!svn/ver/3/trunk/NbNppTraceMonitor/manifest.mf
+END
+derby.log
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/NbNppTraceMonitor/!svn/ver/4/trunk/NbNppTraceMonitor/derby.log
+END

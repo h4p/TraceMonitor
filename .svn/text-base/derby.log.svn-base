@@ -1,0 +1,8 @@
+----------------------------------------------------------------
+2012-05-14 15:47:35.877 GMT:
+Booten von Derby Version The Apache Software Foundation - Apache Derby - 10.6.2.1 - (999685): Instanz a816c00e-0137-4c08-84e7-000000c3c7b0
+für Datenbankverzeichnis C:\Documents and Settings\lu1721\My Documents\NetBeansProjects\NbNppTraceMonitor\TraceMonitor   mit Klassenladeprogrammn sun.misc.Launcher$AppClassLoader@1ea2dfe
+
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_31-b05
+Das Ladeprogramm für Datenbankklassen wurde gestartet - derby.database.classpath=''

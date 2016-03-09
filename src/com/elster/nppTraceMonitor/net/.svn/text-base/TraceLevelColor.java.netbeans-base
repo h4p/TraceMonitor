@@ -1,0 +1,49 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.elster.nppTraceMonitor.net;
+
+import java.awt.Color;
+
+/**
+ * Color definition for every trace level.
+ * The trace table will use this color as
+ * foreground for an entire row.
+ * 
+ * @author wesselst
+ */
+public enum TraceLevelColor {
+    // TODO: Adjust color
+    OFF     ( Color.BLACK ),
+    EMERG   ( new Color(255, 113, 126) ),
+    CRIT    ( new Color(255, 113, 126) ),
+    ERR     ( new Color(255, 153, 0) ),
+    WARN    ( new Color(255, 200, 0) ),
+    NOTICE  ( new Color(102, 204, 0) ),
+    INFO    ( new Color(79, 213, 214) ),
+    DEBUG   ( new Color(204, 255, 204) ),
+    ALL     ( Color.BLACK );
+    
+    
+//    EMERG   (new Color(190,35,35)),
+//    CRIT    (new Color(200,50,40)),
+//    ERR     (new Color(255,150,0)),
+//    WARN    (new Color(255,200,0)),
+//    NOTICE  (new Color(0,150,255)),
+//    INFO    (new Color(0,210,230)),
+//    DEBUG   (new Color(50,180,50)),
+    
+    private final Color color;
+    
+    TraceLevelColor(Color color) 
+    { 
+        this.color = color; 
+    }
+    
+    public Color getColor() 
+    { 
+        return color; 
+    }
+    
+}

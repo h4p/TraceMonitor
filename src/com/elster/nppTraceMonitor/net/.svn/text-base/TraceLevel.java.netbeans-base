@@ -1,0 +1,36 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.elster.nppTraceMonitor.net;
+
+/**
+ *
+ * @author wesselst
+ */
+public enum TraceLevel {
+    OFF     (0),
+    EMERG   (1),
+    CRIT    (2),
+    ERR     (3),
+    WARN    (4),
+    NOTICE  (5),
+    INFO    (6),
+    DEBUG   (7),
+    ALL     (8);
+    
+    
+    
+    
+    private final int level;
+    
+    TraceLevel(int level) 
+    { 
+        this.level = level; 
+    }
+    
+    public int getValue() 
+    { 
+        return level; 
+    }
+}

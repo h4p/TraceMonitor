@@ -1,0 +1,72 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.elster.nppTraceMonitor;
+
+import java.util.logging.Formatter;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.LogRecord;
+
+/**
+ *
+ * @author wesselst
+ */
+public class LoggingWindowHandler extends Handler {
+    private LoggingWindow window = null;
+    private Formatter formatter = null;
+    private Level level = null;
+    private static LoggingWindowHandler handler = null;   
+    
+    
+    
+    private LoggingWindowHandler() {
+        LogManager manager = LogManager.getLogManager();
+        String className = this.getClass().getName();
+        String level = manager.getProperty(className + ".level");
+        setLevel(level != null ? Level.parse(level) : Level.INFO);
+        
+        
+        if (window == null)
+            window = new LoggingWindow (null, true);
+    }
+    
+    
+    public static synchronized LoggingWindowHandler getInstance() {
+        if (handler == null) {
+        handler = new LoggingWindowHandler();
+        }
+        return handler;
+    }
+    
+    public LoggingWindow getLoggingWindow() {
+        return window;
+    }
+    
+    @Override
+    public synchronized void publish(LogRecord record) {
+        String message = null;
+        if (!isLoggable(record))
+            return;
+        
+        // TODO: Formatter implementieren, da getFormatter() NULL zurück gibt
+        message = getFormatter().format(record);
+        window.showInfo(message);
+    }
+    
+    
+    
+    @Override
+    public void close() {
+    }
+
+    @Override
+    public void flush() {
+    }
+}
+    
+    
+    
+

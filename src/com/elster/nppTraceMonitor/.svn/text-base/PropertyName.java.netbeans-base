@@ -1,0 +1,21 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.elster.nppTraceMonitor;
+
+/**
+ * 
+ * @author wesselst
+ */
+public enum PropertyName 
+{
+    SDCARD_TOPDIR("sdCardTopDir");
+    
+    final String propertyKey;
+    
+    PropertyName( final String propertyKey)
+    {
+        this.propertyKey = propertyKey;
+    }
+}
